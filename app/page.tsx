@@ -20,7 +20,7 @@ export default function HomePage() {
   return (
     <div className="bg-bgc text-primary">
       <GradientMask />
-      <div className="grid grid-cols-1 gap-y-32 py-32 md:gap-y-48">
+      <div className="mx-auto grid w-full max-w-[1440px] grid-cols-1 py-32">
         {/* Centered hero — the splash logo + tagline morph down into this lockup and stay. In the static
             test variant, fill the viewport and cancel the grid's top padding so the mark sits dead center. */}
         <section
@@ -33,14 +33,17 @@ export default function HomePage() {
           <BrandIntroLockup />
         </section>
 
-        <section className="fest-container flex flex-col items-start gap-10 md:gap-12">
-          <AnimatedLettersMask text={introTxt} className="min-w-0 flex-1" />
-          <div className="relative aspect-4/3 w-full shrink-0 overflow-hidden rounded-lg md:max-w-md">
+        <section className="fest-container fest-grid items-start gap-y-10 md:gap-y-12">
+          <AnimatedLettersMask
+            text={introTxt}
+            className="640:col-span-7 col-span-full min-w-0 md:col-span-9 xl:col-span-13"
+          />
+          <div className="640:col-span-6 relative col-span-full aspect-4/3 w-full overflow-hidden rounded-lg md:col-span-7 xl:col-span-10">
             <Image
               src="/images/ja_summer_bw.jpeg"
               alt="Black-and-white summer portrait"
               fill
-              sizes="(min-width: 768px) 40vw, 100vw"
+              sizes="(min-width: 640px) 60vw, 100vw"
               className="object-cover"
             />
           </div>
