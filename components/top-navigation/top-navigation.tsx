@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
-// import { EggplantLogo } from "@/components/top-navigation/eggplant-logo";
+import { EggplantLogo } from "@/components/top-navigation/eggplant-logo";
 import { MenuButton } from "@/components/top-navigation/menu-button/menu-button";
 import { SnakeBorder } from "@/components/top-navigation/snake-border/snake-border";
 import { AccessibilityMenu } from "@/components/accessibility/accessibility-menu";
@@ -33,12 +33,12 @@ export function TopNavigation() {
 
   return (
     <>
-      {/* Logo — metallic silver, always visible */}
-      {/* <div className="pointer-events-none fixed top-0 right-0 left-0 z-99999">
+      {/* Logo — animated eggplant brand mark, always visible */}
+      <div className="pointer-events-none fixed top-0 right-0 left-0 z-99999">
         <div className="fest-container flex w-full items-start">
           <EggplantLogo />
         </div>
-      </div> */}
+      </div>
 
       {/* Hamburger — own layer with mix-blend-difference so it auto-inverts on any background */}
       <div className="pointer-events-none fixed top-0 right-0 left-0 z-99999 mix-blend-difference">
