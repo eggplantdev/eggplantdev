@@ -10,7 +10,7 @@ import { useBrandIntro, WORDMARK } from "./brand-intro-context";
 import { IntroWordmark } from "./intro-wordmark";
 
 // Splash size — the mark at full height, used by the "static" test variant (no scale-down).
-const FULL_LOGO_CLASS = "size-32 sm:size-60";
+const FULL_LOGO_CLASS = "size-32 md:size-60";
 
 // Where the splash lockup lands. Lives in the page hero (under <BrandIntroProvider>); it consumes the
 // intro phase and renders the logo + wordmark as a placeholder → morph target → settled mark. The splash
