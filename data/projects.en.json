@@ -156,7 +156,7 @@
       "slug": "bht-startup-hub",
       "name": "BHT Startup Hub",
       "category": "commercial",
-      "url": "https://bht-startup-hub.de",
+      "url": "https://www.bht-berlin.de",
       "description": "The website for Berlin University of Technology's startup incubator — a lean accelerator that has supported over 300 founders with coaching, coworking space, and equity-free scholarships. I built the custom frontend integrated with a WordPress backend, delivering pages for their programs (Berlin Startup Stipendium, EXIST grants), event calendars, news, and partner showcases.",
       "logo": "/images/projects/alpha-logo.png",
       "tempSlug": "/projects/bht-startup-hub",
@@ -284,12 +284,54 @@
       ]
     },
     {
+      "uuid": "11",
+      "slug": "chaos-kitchen",
+      "name": "Chaos Kitchen",
+      "category": "freelance",
+      "url": "https://www.chaoskitchen.pl",
+      "description": "A high-end personal-brand site for nomadic chef Marta Leśniewska, built solo end-to-end. The single-page scrolling experience extends her Instagram presence — showcasing private dinners, premium catering, retreat cooking, and fermentation workshops — and is paired with a full ebook store: cart, Przelewy24 payments, digital fulfilment, and gated download links delivered by email. I designed and built the entire stack, from the Payload CMS backend and Postgres data layer to the animated GSAP frontend.",
+      "logo": "/images/projects/alpha-logo.png",
+      "tempSlug": "/projects/chaos-kitchen",
+      "sections": [
+        {
+          "type": "main",
+          "cats": {
+            "Client": "Marta Leśniewska — Chaos Kitchen",
+            "Region": "Poland",
+            "Year": "2026",
+            "Industry": "Personal Brand & E-Commerce"
+          },
+          "slides": [
+            {
+              "mainFoto": "/images/projects/alpha/slide-1.jpg",
+              "desktopView": "/images/projects/alpha/slide-1-desktop.jpg",
+              "mobileView": "/images/projects/alpha/slide-1-mobile.jpg"
+            }
+          ]
+        },
+        {
+          "type": "techstack",
+          "title": "Technology Stack",
+          "tags": [
+            "Next.js",
+            "Payload CMS",
+            "PostgreSQL",
+            "TypeScript",
+            "Przelewy24",
+            "GSAP",
+            "Framer Motion",
+            "Tailwind CSS"
+          ]
+        }
+      ]
+    },
+    {
       "uuid": "7",
       "slug": "wykonczymy",
       "name": "Wykonczymy",
       "category": "freelance",
       "url": "https://www.wykonczymy.com.pl",
-      "description": "A management tool for a family-run construction and renovation company in Warsaw that also operates an online tile shop. I built a system covering project reporting, money flow tracking, and email automation — replacing scattered spreadsheets and manual processes with a centralized operational view tailored to how the business actually works.",
+      "description": "A full operations platform for a family-run construction and renovation company in Warsaw. What began as basic money-flow tracking has grown into an integrated business system: multi-register cash management on a dual-ledger model (real cash flow vs. per-investment P&L — margins, balances, labor and material costs), project management with role-based access for the whole team, and an in-app cost-estimate (kosztorys) editor with sections, work stages, a shared work catalogue, and live totals that is replacing the company's old Google Sheets workflow — with Sheets/Drive sync bridging the migration. I build and own it end-to-end on Next.js and Payload CMS, including the financial calculation engine and email automation.",
       "logo": "/images/projects/alpha-logo.png",
       "tempSlug": "/projects/wykonczymy",
       "sections": [
@@ -312,7 +354,7 @@
         {
           "type": "techstack",
           "title": "Technology Stack",
-          "tags": ["Next.js", "React", "TypeScript", "Tailwind CSS"]
+          "tags": ["Next.js", "React", "TypeScript", "Payload CMS", "PostgreSQL", "Google Sheets API", "Tailwind CSS"]
         }
       ]
     },
@@ -379,6 +421,50 @@
           "type": "techstack",
           "title": "Technology Stack",
           "tags": ["Svelte", "WordPress", "REST API", "CSS"]
+        }
+      ]
+    },
+    {
+      "uuid": "12",
+      "slug": "eggplant-notes",
+      "name": "Eggplant Notes",
+      "category": "freelance",
+      "url": "https://eggplant-notes.vercel.app",
+      "description": "A spaced-repetition learning app for developers, built solo end-to-end. Notes are grouped into subjects and rendered with syntax-highlighted code, then turned into recall cards scheduled by the FSRS algorithm — each card links back to its source note so context is never lost. Users connect their own OpenRouter key to generate notes and cards with AI (including from pasted text and PDFs), and a token-authenticated HTTP API lets CLI tools and coding agents read and write content directly. Installable as a PWA, with strict per-user data isolation enforced by Postgres row-level security.",
+      "logo": "/images/projects/alpha-logo.png",
+      "tempSlug": "/projects/eggplant-notes",
+      "sections": [
+        {
+          "type": "main",
+          "cats": {
+            "Client": "Self-initiated",
+            "Region": "Poland",
+            "Year": "2026",
+            "Industry": "EdTech & Developer Tools"
+          },
+          "slides": [
+            {
+              "mainFoto": "/images/projects/alpha/slide-1.jpg",
+              "desktopView": "/images/projects/alpha/slide-1-desktop.jpg",
+              "mobileView": "/images/projects/alpha/slide-1-mobile.jpg"
+            }
+          ]
+        },
+        {
+          "type": "techstack",
+          "title": "Technology Stack",
+          "tags": [
+            "Next.js",
+            "React",
+            "TypeScript",
+            "Supabase",
+            "PostgreSQL",
+            "AI SDK",
+            "OpenRouter",
+            "FSRS",
+            "Tailwind CSS",
+            "shadcn/ui"
+          ]
         }
       ]
     }

@@ -108,7 +108,7 @@
       "slug": "bht-startup-hub",
       "name": "BHT Startup Hub",
       "category": "commercial",
-      "url": "https://bht-startup-hub.de",
+      "url": "https://www.bht-berlin.de",
       "description": "Strona internetowa inkubatora startupów Berlińskiego Uniwersytetu Technologicznego — lekkiego akceleratora, który wsparł ponad 300 założycieli poprzez coaching, coworking i bezzwrotne stypendia. Zbudowałem niestandardowy frontend zintegrowany z backendem WordPress, dostarczając strony dla programów (Berlin Startup Stipendium, granty EXIST), kalendarze wydarzeń, aktualności i prezentacje partnerów.",
       "logo": "/images/projects/alpha-logo.png",
       "tempSlug": "/projects/bht-startup-hub",
@@ -236,12 +236,54 @@
       ]
     },
     {
+      "uuid": "11",
+      "slug": "chaos-kitchen",
+      "name": "Chaos Kitchen",
+      "category": "freelance",
+      "url": "https://www.chaoskitchen.pl",
+      "description": "Ekskluzywna strona marki osobistej dla kucharki-nomadki Marty Leśniewskiej, zbudowana w pełni samodzielnie. Jednostronicowe, przewijane doświadczenie rozszerza jej obecność na Instagramie — prezentując kolacje prywatne, catering premium, gotowanie na wyjazdach i warsztaty fermentacji — i jest połączone z pełnym sklepem z ebookami: koszyk, płatności Przelewy24, realizacja cyfrowa i zabezpieczone linki do pobrania wysyłane mailem. Zaprojektowałem i zbudowałem cały stack — od backendu Payload CMS i warstwy danych Postgres po animowany frontend w GSAP.",
+      "logo": "/images/projects/alpha-logo.png",
+      "tempSlug": "/projects/chaos-kitchen",
+      "sections": [
+        {
+          "type": "main",
+          "cats": {
+            "Client": "Marta Leśniewska — Chaos Kitchen",
+            "Region": "Polska",
+            "Year": "2026",
+            "Industry": "Marka Osobista i E-Commerce"
+          },
+          "slides": [
+            {
+              "mainFoto": "/images/projects/alpha/slide-1.jpg",
+              "desktopView": "/images/projects/alpha/slide-1-desktop.jpg",
+              "mobileView": "/images/projects/alpha/slide-1-mobile.jpg"
+            }
+          ]
+        },
+        {
+          "type": "techstack",
+          "title": "Stack Technologiczny",
+          "tags": [
+            "Next.js",
+            "Payload CMS",
+            "PostgreSQL",
+            "TypeScript",
+            "Przelewy24",
+            "GSAP",
+            "Framer Motion",
+            "Tailwind CSS"
+          ]
+        }
+      ]
+    },
+    {
       "uuid": "7",
       "slug": "wykonczymy",
       "name": "Wykonczymy",
       "category": "freelance",
       "url": "https://www.wykonczymy.com.pl",
-      "description": "Narzędzie zarządzania dla rodzinnej firmy budowlano-remontowej w Warszawie, która prowadzi również sklep internetowy z płytkami. Zbudowałem system obejmujący raportowanie projektów, śledzenie przepływów finansowych i automatyzację emaili — zastępując rozproszone arkusze kalkulacyjne i ręczne procesy scentralizowanym widokiem operacyjnym dopasowanym do tego, jak firma faktycznie działa.",
+      "description": "Kompletna platforma operacyjna dla rodzinnej firmy budowlano-remontowej w Warszawie. To, co zaczęło się jako proste śledzenie przepływów finansowych, urosło do zintegrowanego systemu biznesowego: zarządzanie wieloma kasami w modelu dwuksięgowym (realny przepływ gotówki vs. wynik finansowy per inwestycja — marże, bilanse, koszty robocizny i materiałów), zarządzanie projektami z dostępem opartym na rolach dla całego zespołu oraz wbudowany edytor kosztorysów z sekcjami, etapami prac, wspólnym katalogiem robót i kalkulacją na żywo, który zastępuje dotychczasowy proces oparty na Arkuszach Google — z synchronizacją Sheets/Drive na czas migracji. Buduję i rozwijam go end-to-end na Next.js i Payload CMS, łącznie z silnikiem obliczeń finansowych i automatyzacją emaili.",
       "logo": "/images/projects/alpha-logo.png",
       "tempSlug": "/projects/wykonczymy",
       "sections": [
@@ -264,7 +306,7 @@
         {
           "type": "techstack",
           "title": "Stack Technologiczny",
-          "tags": ["Next.js", "React", "TypeScript", "Tailwind CSS"]
+          "tags": ["Next.js", "React", "TypeScript", "Payload CMS", "PostgreSQL", "Google Sheets API", "Tailwind CSS"]
         }
       ]
     },
@@ -331,6 +373,50 @@
           "type": "techstack",
           "title": "Stack Technologiczny",
           "tags": ["Svelte", "WordPress", "REST API", "CSS"]
+        }
+      ]
+    },
+    {
+      "uuid": "12",
+      "slug": "eggplant-notes",
+      "name": "Eggplant Notes",
+      "category": "freelance",
+      "url": "https://eggplant-notes.vercel.app",
+      "description": "Aplikacja do nauki z powtórkami rozłożonymi w czasie, stworzona dla programistów — zbudowana w pełni samodzielnie. Notatki grupowane są w przedmioty i renderowane z podświetlaniem składni kodu, a następnie zamieniane w karty powtórek planowane algorytmem FSRS — każda karta linkuje z powrotem do notatki źródłowej, więc kontekst nigdy nie ginie. Użytkownicy podłączają własny klucz OpenRouter, by generować notatki i karty z pomocą AI (również z wklejonego tekstu i plików PDF), a uwierzytelniane tokenem API HTTP pozwala narzędziom CLI i agentom kodującym czytać i zapisywać treści bezpośrednio. Instalowalna jako PWA, ze ścisłą izolacją danych per użytkownik wymuszaną przez row-level security w Postgresie.",
+      "logo": "/images/projects/alpha-logo.png",
+      "tempSlug": "/projects/eggplant-notes",
+      "sections": [
+        {
+          "type": "main",
+          "cats": {
+            "Client": "Projekt własny",
+            "Region": "Polska",
+            "Year": "2026",
+            "Industry": "EdTech i Narzędzia dla Programistów"
+          },
+          "slides": [
+            {
+              "mainFoto": "/images/projects/alpha/slide-1.jpg",
+              "desktopView": "/images/projects/alpha/slide-1-desktop.jpg",
+              "mobileView": "/images/projects/alpha/slide-1-mobile.jpg"
+            }
+          ]
+        },
+        {
+          "type": "techstack",
+          "title": "Stack Technologiczny",
+          "tags": [
+            "Next.js",
+            "React",
+            "TypeScript",
+            "Supabase",
+            "PostgreSQL",
+            "AI SDK",
+            "OpenRouter",
+            "FSRS",
+            "Tailwind CSS",
+            "shadcn/ui"
+          ]
         }
       ]
     }
