@@ -5,7 +5,7 @@ import { AnimatedBrandLogo } from "@/components/brand/animated-brand-logo";
 import { cn } from "@/helpers/cn";
 
 export function EggplantLogo({ className, link = true }: { className?: string; link?: boolean }) {
-  const eggplantLogo = <AnimatedBrandLogo className={cn("size-10 sm:size-20 lg:size-32", className)} />;
+  const eggplantLogo = <AnimatedBrandLogo className={cn("size-8 sm:size-10 lg:size-12", className)} />;
 
   if (!link) return eggplantLogo;
 
