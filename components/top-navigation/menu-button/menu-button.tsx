@@ -26,7 +26,7 @@ export const MenuButton = forwardRef<HTMLButtonElement, MenuButtonPropsT>(functi
         stroke="currentColor"
         fill="none"
         className={cn(
-          "contrast:text-[var(--contrast-fg)] text-white transition-[translate,rotate] duration-1000",
+          "contrast:text-[var(--contrast-fg)] text-primary transition-[translate,rotate] duration-1000",
           isOpen && "translate-[-3px_-2px] rotate-45",
         )}
         viewBox="-10 -10 105 120"
