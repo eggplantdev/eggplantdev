@@ -3,10 +3,10 @@ import { HeroDescription } from "@/components/home/heroes/hero-description";
 import { HeroEggplant } from "@/components/home/heroes/hero-eggplant";
 import { HeroSubtitle } from "@/components/home/heroes/hero-subtitle";
 import { HeroTitle } from "@/components/home/heroes/hero-title";
-import { useLocalizedHeroCopy } from "@/hooks/use-localized-hero-copy";
+import { HERO_COPY } from "@/data/hero-copy";
 
 export function HexLatticeShrineHeroContent() {
-  const { eyebrow, titleLine1, titleLine2, description } = useLocalizedHeroCopy("hexLatticeShrine");
+  const { eyebrow, titleLine1, titleLine2, description } = HERO_COPY.hexLatticeShrine;
   return (
     <HeroContentWrapper
       above={

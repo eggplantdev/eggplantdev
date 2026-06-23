@@ -7,13 +7,10 @@ import { HeroEggplant } from "@/components/home/heroes/hero-eggplant";
 import { HeroSubtitle } from "@/components/home/heroes/hero-subtitle";
 import { HeroTitle } from "@/components/home/heroes/hero-title";
 import { Button } from "@/components/ui/button";
-import { useLocalizedHeroCopy } from "@/hooks/use-localized-hero-copy";
-import type { HeroCopyKeyT } from "@/data/hero-copy";
+import { HERO_COPY, type HeroCopyKeyT } from "@/data/hero-copy";
 
 export function GridOfLifeHeroContent({ copyKey }: { copyKey?: HeroCopyKeyT }) {
-  const { subtitle, titleLine1, titleLine2, description, buttonPrimary } = useLocalizedHeroCopy(
-    copyKey ?? "gridOfLife",
-  );
+  const { subtitle, titleLine1, titleLine2, description, buttonPrimary } = HERO_COPY[copyKey ?? "gridOfLife"];
   return (
     <HeroContentWrapper
       above={

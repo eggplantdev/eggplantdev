@@ -4,11 +4,10 @@ import { HeroEggplant } from "@/components/home/heroes/hero-eggplant";
 import { HeroSubtitle } from "@/components/home/heroes/hero-subtitle";
 import { HeroTitle } from "@/components/home/heroes/hero-title";
 import { Button } from "@/components/ui/button";
-import { useLocalizedHeroCopy } from "@/hooks/use-localized-hero-copy";
+import { HERO_COPY } from "@/data/hero-copy";
 
 export function CosmicCultFlyerHeroContent() {
-  const { subtitle, titleLine1, titleLine2, description, buttonPrimary, buttonSecondary } =
-    useLocalizedHeroCopy("cosmicCultFlyer");
+  const { subtitle, titleLine1, titleLine2, description, buttonPrimary, buttonSecondary } = HERO_COPY.cosmicCultFlyer;
   return (
     <HeroContentWrapper
       above={

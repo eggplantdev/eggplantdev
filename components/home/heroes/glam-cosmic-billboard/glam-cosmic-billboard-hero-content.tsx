@@ -4,10 +4,10 @@ import { HeroSubtitle } from "@/components/home/heroes/hero-subtitle";
 import { HeroTitle } from "@/components/home/heroes/hero-title";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { useLocalizedHeroCopy } from "@/hooks/use-localized-hero-copy";
+import { HERO_COPY } from "@/data/hero-copy";
 
 export function GlamCosmicBillboardHeroContent() {
-  const { subtitle, titleLine1, titleLine2, description, buttons } = useLocalizedHeroCopy("glamCosmicBillboard");
+  const { subtitle, titleLine1, titleLine2, description, buttons } = HERO_COPY.glamCosmicBillboard;
   return (
     <div className={`fest-container relative z-10`}>
       <div className="relative z-10 grid grid-cols-[1fr_auto] items-center md:justify-items-stretch">

@@ -8,5 +8,3 @@ export type HeroCopyT = {
   buttonPrimary?: string;
   buttonSecondary?: string;
 };
-
-export type HeroCopyVariantT = "v2";

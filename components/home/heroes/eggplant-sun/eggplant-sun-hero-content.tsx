@@ -5,10 +5,10 @@ import { HeroDescription } from "@/components/home/heroes/hero-description";
 import { HeroEggplant } from "@/components/home/heroes/hero-eggplant";
 import { HeroSubtitle } from "@/components/home/heroes/hero-subtitle";
 import { HeroTitle } from "@/components/home/heroes/hero-title";
-import { useLocalizedHeroCopy } from "@/hooks/use-localized-hero-copy";
+import { HERO_COPY } from "@/data/hero-copy";
 
 export function EggplantSunHeroContent() {
-  const { subtitle, titleLine1, titleLine2, description } = useLocalizedHeroCopy("soleilAubergine");
+  const { subtitle, titleLine1, titleLine2, description } = HERO_COPY.soleilAubergine;
   return (
     <HeroContentWrapper
       above={
