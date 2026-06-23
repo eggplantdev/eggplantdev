@@ -81,7 +81,7 @@ export const AnimatedLettersMask = ({ text = "" }) => {
     <div className={`fest-container`}>
       <div
         ref={lettersRef}
-        className={`no-scrollbar flex flex-col overflow-x-hidden overflow-y-scroll pr-12 sm:w-[calc(340/360*100vw)] md:w-[calc(590/768*100vw)] md:pt-[120px] md:pr-0 lg:w-[calc(740/1024*100vw)] lg:max-w-[940px]`}
+        className={`flex flex-col overflow-x-clip pr-12 sm:w-[calc(340/360*100vw)] md:w-[calc(590/768*100vw)] md:pt-[120px] md:pr-0 lg:w-[calc(740/1024*100vw)] lg:max-w-[940px]`}
       >
         <div
           id="target-mask"
