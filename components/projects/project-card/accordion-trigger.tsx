@@ -15,12 +15,7 @@ type AccordionTriggerPropsT = {
 
 export function AccordionTrigger({ name, year, isOpen, hasUrl, nameFontClass }: AccordionTriggerPropsT) {
   return (
-    <Accordion.Trigger
-      className={cn(
-        "group/trigger w-full cursor-pointer transition-transform duration-300 group-hover/card:translate-y-[-6px]",
-        isOpen && "pointer-events-none",
-      )}
-    >
+    <Accordion.Trigger className="group/trigger w-full cursor-pointer transition-transform duration-300 group-hover/card:translate-y-[-6px]">
       <div className="grid grid-cols-[1fr_auto] items-center gap-4 py-12">
         <div className="flex flex-col items-start">
           <GlowWrapper
