@@ -10,7 +10,7 @@ import { ErrorOverlay } from "@/components/general/error-overlay";
 import { cn } from "@/helpers/cn";
 import { FieldErrors } from "@/components/ui/field-errors";
 import { SubmitButton } from "@/components/ui/submit-button";
-import { useTranslation } from "@/lib/i18n/hooks/use-translation";
+import strings from "@/data/ui-copy.json";
 
 function fieldProps(field: AnyFieldApi) {
   const hasErrors = field.state.meta.errors.length > 0;
@@ -28,7 +28,7 @@ function fieldProps(field: AnyFieldApi) {
 export function FooterForm({ className }: { className?: string }) {
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
-  const { t, locale } = useTranslation("form");
+  const t = strings.form;
 
   const form = useForm({
     defaultValues: {
@@ -40,7 +40,7 @@ export function FooterForm({ className }: { className?: string }) {
       onSubmit: contactFormSchema,
     },
     onSubmit: async ({ value }) => {
-      const result = await sendEmail({ ...value, locale });
+      const result = await sendEmail({ ...value });
       setIsError(!result.success);
       setIsSuccess(result.success);
       if (result.success) form.reset();
@@ -64,8 +64,8 @@ export function FooterForm({ className }: { className?: string }) {
               <input
                 className={`border-copy-muted placeholder:text-16 placeholder:text-copy-muted h-12 w-full border-b lg:h-14`}
                 type="text"
-                placeholder={t("name")}
-                aria-label={t("name")}
+                placeholder={t.name}
+                aria-label={t.name}
                 autoComplete="name"
                 {...fieldProps(field)}
               />
@@ -79,8 +79,8 @@ export function FooterForm({ className }: { className?: string }) {
               <input
                 className={`border-copy-muted placeholder:text-16 placeholder:text-copy-muted h-12 w-full border-b lg:h-14`}
                 type="email"
-                placeholder={t("email")}
-                aria-label={t("email")}
+                placeholder={t.email}
+                aria-label={t.email}
                 autoComplete="email"
                 {...fieldProps(field)}
               />
@@ -93,8 +93,8 @@ export function FooterForm({ className }: { className?: string }) {
             <div className="relative">
               <textarea
                 className={`border-copy-muted placeholder:text-copy-muted field-sizing-content min-h-32 w-full border-b py-3`}
-                placeholder={t("projectDetails")}
-                aria-label={t("projectDetails")}
+                placeholder={t.projectDetails}
+                aria-label={t.projectDetails}
                 {...fieldProps(field)}
               />
               <FieldErrors errors={field.state.meta.errors} id="message-error" className="bottom-2" />

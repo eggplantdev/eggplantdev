@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/helpers/cn";
-import { useTranslation } from "@/lib/i18n/hooks/use-translation";
+import strings from "@/data/ui-copy.json";
 
 type SubmitButtonPropsT = {
   isSubmitting: boolean;
@@ -10,7 +10,7 @@ type SubmitButtonPropsT = {
 };
 
 export function SubmitButton({ isSubmitting, canSubmit, className }: SubmitButtonPropsT) {
-  const { t } = useTranslation("common");
+  const t = strings.common;
 
   return (
     <button
@@ -18,7 +18,7 @@ export function SubmitButton({ isSubmitting, canSubmit, className }: SubmitButto
       disabled={!canSubmit}
       className={cn("text-24 w-full cursor-pointer text-start font-mono uppercase disabled:opacity-50", className)}
     >
-      <span className={`text-black`}>{isSubmitting ? t("sending") : t("submit")}</span>
+      <span className={`text-black`}>{isSubmitting ? t.sending : t.submit}</span>
     </button>
   );
 }

@@ -3,14 +3,14 @@
 import { FooterForm } from "@/components/footer/footer-form";
 import { ScrambleText } from "@/components/general/scramble-text";
 import { AccessibilityMenu } from "@/components/accessibility/accessibility-menu";
-import { useTranslation } from "@/lib/i18n/hooks/use-translation";
+import strings from "@/data/ui-copy.json";
 
 export const Footer = () => {
-  const { t } = useTranslation("footer");
-  const sloganLines = [t("sloganLine1"), t("sloganLine2"), t("sloganLine3")];
+  const t = strings.footer;
+  const sloganLines = [t.sloganLine1, t.sloganLine2, t.sloganLine3];
 
   return (
-    <footer id="contact" className="relative z-100 scroll-mt-32 mt-auto flex w-full bg-white pb-10 text-black">
+    <footer id="contact" className="relative z-100 mt-auto flex w-full scroll-mt-32 bg-white pb-10 text-black">
       <div className="fest-container">
         <div className="flex flex-col">
           <header className="flex flex-col lg:grid lg:grid-cols-2 lg:gap-20 xl:gap-40">

@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { ScrambleText } from "@/components/general/scramble-text";
 import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { useTranslation } from "@/lib/i18n/hooks/use-translation";
+import strings from "@/data/ui-copy.json";
 
 type ConfirmOverlayPropsT = {
   isOpen: boolean;
@@ -12,7 +12,7 @@ type ConfirmOverlayPropsT = {
 
 export function ConfirmOverlay({ isOpen, onClose }: ConfirmOverlayPropsT) {
   const [showHint, setShowHint] = useState(false);
-  const { t } = useTranslation("form");
+  const t = strings.form;
 
   useEffect(() => {
     if (!isOpen) return;
@@ -33,14 +33,16 @@ export function ConfirmOverlay({ isOpen, onClose }: ConfirmOverlayPropsT) {
         onClick={onClose}
       >
         <div className="grit-dense pointer-events-none absolute inset-0" />
-        <DialogTitle className="sr-only">{t("confirmTitle")}</DialogTitle>
+        <DialogTitle className="sr-only">{t.confirmTitle}</DialogTitle>
         <div className="relative flex flex-col items-center gap-8">
-          <p className="text-20 md:text-28 max-w-2xl text-center font-mono text-primary uppercase">
-            <ScrambleText text={t("thankYou")} triggerOnMount />
-            <ScrambleText text={t("willGetBack")} triggerOnMount />
+          <p className="text-20 md:text-28 text-primary max-w-2xl text-center font-mono uppercase">
+            <ScrambleText text={t.thankYou} triggerOnMount />
+            <ScrambleText text={t.willGetBack} triggerOnMount />
           </p>
-          <p className={`text-16 text-copy-muted transition-opacity duration-500 ${showHint ? "opacity-100" : "opacity-0"}`}>
-            {t("clickToClose")}
+          <p
+            className={`text-16 text-copy-muted transition-opacity duration-500 ${showHint ? "opacity-100" : "opacity-0"}`}
+          >
+            {t.clickToClose}
           </p>
         </div>
       </DialogContent>

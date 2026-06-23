@@ -2,7 +2,7 @@ import * as Accordion from "@radix-ui/react-accordion";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { GlowWrapper } from "@/components/general/glow-wrapper";
-import { useTranslation } from "@/lib/i18n/hooks/use-translation";
+import strings from "@/data/ui-copy.json";
 
 type AccordionContentPropsT = {
   isOpen: boolean;
@@ -49,7 +49,7 @@ type ContentInnerPropsT = Omit<AccordionContentPropsT, "isOpen">;
 // Exported for reuse in the offscreen measurement container (projects-accordion.tsx)
 // that calculates the tallest panel height before any user interaction.
 export function ContentInner({ description, tags, url }: ContentInnerPropsT) {
-  const { t } = useTranslation("projects");
+  const t = strings.projects;
 
   return (
     <div className="scalable grid gap-6 pr-10 pb-12">
@@ -72,7 +72,7 @@ export function ContentInner({ description, tags, url }: ContentInnerPropsT) {
           rel="noopener noreferrer"
           className="text-16 text-hero-title-secondary hover:text-copy-strong relative w-fit transition-colors duration-300"
         >
-          <GlowWrapper className={`-inset-x-5 -inset-y-3`}>{t("visitWebsite")}</GlowWrapper>
+          <GlowWrapper className={`-inset-x-5 -inset-y-3`}>{t.visitWebsite}</GlowWrapper>
         </Link>
       )}
     </div>

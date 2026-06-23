@@ -1,6 +1,4 @@
 import { create } from "zustand";
-import type { LocaleT } from "@/lib/i18n/types";
-import { LOCALE_ENABLED, ACTIVE_LOCALE } from "@/lib/i18n/config";
 
 // ── Constants ──────────────────────────────────────────────
 const STORAGE_KEY = "preferences";
@@ -16,7 +14,6 @@ type ThemeT = (typeof THEMES)[number];
 
 type PersistedT = {
   theme: ThemeT;
-  locale: LocaleT;
   scale: number;
   letterAnimations: boolean;
 };
@@ -25,7 +22,6 @@ type PreferencesStoreT = PersistedT & {
   setTheme: (theme: ThemeT) => void;
   setScale: (scale: number) => void;
   setAnimation: (key: AnimationKeyT, enabled: boolean) => void;
-  setLocale: (locale: LocaleT) => void;
   // Load persisted prefs after mount. MUST run only on the client (in an effect),
   // never during render — see DEFAULTS below for why.
   hydrate: () => void;
@@ -56,17 +52,16 @@ function getPersisted(): PersistedT | undefined {
 // ── Initial state ──────────────────────────────────────────
 // Deterministic defaults — identical on the server and on the client's FIRST render.
 // The store must NOT read localStorage or matchMedia at module load: that would make the
-// client's first render differ from the server HTML (persisted locale/theme vs default),
+// client's first render differ from the server HTML (persisted theme vs default),
 // which is exactly the hydration mismatch this replaces. Persisted values are applied
 // later by hydrate(), called from a client effect after mount.
 const DEFAULTS: PersistedT = {
   theme: "dark",
-  locale: "en",
   scale: MIN_SCALE,
   letterAnimations: true,
 };
 
-// ── Apply side effects (theme, font-scale, lang) ───────────
+// ── Apply side effects (theme, font-scale) ─────────────────
 function applyTheme(theme: ThemeT) {
   document.documentElement.setAttribute("data-theme", theme);
 }
@@ -75,15 +70,10 @@ function applyScale(scale: number) {
   document.documentElement.style.setProperty("--font-scale", String(scale));
 }
 
-function applyLocale(locale: LocaleT) {
-  document.documentElement.lang = locale;
-}
-
 // ── Store ──────────────────────────────────────────────────
 function getPersistedSlice(state: PreferencesStoreT): PersistedT {
   return {
     theme: state.theme,
-    locale: state.locale,
     scale: state.scale,
     letterAnimations: state.letterAnimations,
   };
@@ -95,11 +85,8 @@ export const usePreferencesStore = create<PreferencesStoreT>()((set, get) => ({
   hydrate: () => {
     const saved = getPersisted();
     const next: PersistedT = saved ?? { ...DEFAULTS, letterAnimations: !detectReducedMotion() };
-    // Single-locale pin: ignore any persisted locale while disabled (see lib/i18n/config).
-    if (!LOCALE_ENABLED) next.locale = ACTIVE_LOCALE;
     applyTheme(next.theme);
     applyScale(next.scale);
-    applyLocale(next.locale);
     set(next);
     if (!saved) persist(next);
   },
@@ -121,15 +108,7 @@ export const usePreferencesStore = create<PreferencesStoreT>()((set, get) => ({
     set({ [key]: enabled });
     persist(getPersistedSlice({ ...get(), [key]: enabled }));
   },
-
-  setLocale: (locale) => {
-    // No-op while the single-locale pin is active (see lib/i18n/config).
-    if (!LOCALE_ENABLED) return;
-    applyLocale(locale);
-    set({ locale });
-    persist(getPersistedSlice({ ...get(), locale }));
-  },
 }));
 
 export { ANIMATION_KEYS, THEMES, MIN_SCALE, MAX_SCALE, FONT_STEP };
-export type { AnimationKeyT, ThemeT, LocaleT };
+export type { AnimationKeyT, ThemeT };

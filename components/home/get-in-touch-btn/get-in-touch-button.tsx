@@ -7,7 +7,7 @@ import { useGSAP } from "@gsap/react";
 import { ToggleIcon } from "@/components/home/get-in-touch-btn/toggle-icon";
 import { ButtonForm } from "@/components/home/get-in-touch-btn/button-form";
 import { useOnClickOutside } from "@/hooks/use-on-click-outside";
-import { useTranslation } from "@/lib/i18n/hooks/use-translation";
+import strings from "@/data/ui-copy.json";
 
 export const GetInTouchButton = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -16,7 +16,7 @@ export const GetInTouchButton = () => {
   const [open, setOpen] = useState(false);
   const toggleModal = () => setOpen((p) => !p);
   const close = useCallback(() => setOpen(false), []);
-  const { t } = useTranslation("footer");
+  const t = strings.footer;
 
   useOnClickOutside(containerRef, close);
 
@@ -63,11 +63,9 @@ export const GetInTouchButton = () => {
               ref={textRef}
               className={cn(`flex gap-2 text-start font-mono uppercase`, open ? "text-28 flex-col" : "")}
             >
-              {t("getInTouch")
-                .split(" ")
-                .map((word) => (
-                  <span key={word}>{word}</span>
-                ))}
+              {t.getInTouch.split(" ").map((word) => (
+                <span key={word}>{word}</span>
+              ))}
             </span>
             <ToggleIcon open={open} className={`h-full`} />
           </button>

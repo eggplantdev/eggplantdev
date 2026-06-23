@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { AccessibilityMenu } from "./accessibility-menu";
-import { useTranslation } from "@/lib/i18n/hooks/use-translation";
+import strings from "@/data/ui-copy.json";
 import { AnimationToggles } from "./animation-toggles";
 import { RoundedSeparator } from "../general/rounded-separator";
 
@@ -12,7 +12,7 @@ type MobileMenuPropsT = {
 };
 
 export function MobileMenu({ isOpen, setIsOpen }: MobileMenuPropsT) {
-  const { t } = useTranslation("accessibility");
+  const t = strings.accessibility;
 
   return (
     <AnimatePresence>
@@ -33,7 +33,7 @@ export function MobileMenu({ isOpen, setIsOpen }: MobileMenuPropsT) {
 
               <AccessibilityMenu className="uppercase" />
               <RoundedSeparator className="my-6" />
-              <p className="text-16 text-copy-body scalable pb-6 text-balance">{t("animationNotice")}</p>
+              <p className="text-16 text-copy-body scalable pb-6 text-balance">{t.animationNotice}</p>
               <AnimationToggles className="uppercase" />
               <RoundedSeparator className="my-6" />
             </div>

@@ -11,7 +11,7 @@ import { useClickOutside } from "@/hooks/use-click-outside";
 import { useMinMD } from "@/hooks/use-media-query";
 import { RoundedSeparator } from "@/components/general/rounded-separator";
 import { AnimationToggles } from "@/components/accessibility/animation-toggles";
-import { useTranslation } from "@/lib/i18n/hooks/use-translation";
+import strings from "@/data/ui-copy.json";
 import { useBrandIntro } from "@/components/brand/brand-intro-context";
 
 export function TopNavigation() {
@@ -19,7 +19,7 @@ export function TopNavigation() {
   const menuRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const isDesktop = useMinMD();
-  const { t } = useTranslation("accessibility");
+  const t = strings.accessibility;
   const phase = useBrandIntro();
   // The brand intro veil is opaque through idle → splash → morph; keep the hamburger/dropdown out of
   // sight behind it so no stray chrome floats over the splash. The logo participates in the morph.
@@ -88,7 +88,7 @@ export function TopNavigation() {
                     <div className="grit text-primary grid-cols-1 p-5">
                       <AccessibilityMenu className="uppercase" />
                       <RoundedSeparator className="my-4" />
-                      <p className="text-copy-body scalable pb-4 text-xs text-balance">{t("animationNotice")}</p>
+                      <p className="text-copy-body scalable pb-4 text-xs text-balance">{t.animationNotice}</p>
                       <AnimationToggles className="uppercase" />
                     </div>
                   </div>

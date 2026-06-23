@@ -6,7 +6,6 @@ import { poly, theinhardt, jetbrainsMono, ibmPlexMono, firaCode, geistMono } fro
 
 import { TopNavigation } from "@/components/top-navigation/top-navigation";
 import { DebugWrapper } from "@/components/debug-tools/debug-wrapper";
-import { TranslationsProvider } from "@/lib/i18n/translations-provider";
 import { SkipToContent } from "@/components/accessibility/skip-to-content";
 import { PreferencesHydrator } from "@/components/general/preferences-hydrator";
 import { Footer } from "../components/footer/footer";
@@ -31,24 +30,22 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       className={`overflow-x-hidden scroll-smooth ${poly.variable} ${theinhardt.variable} ${jetbrainsMono.variable} ${ibmPlexMono.variable} ${firaCode.variable} ${geistMono.variable} ${poly.className} ${theinhardt.className}`}
     >
       <body className="overflow-x-clip overscroll-none scroll-smooth antialiased" suppressHydrationWarning>
-        <TranslationsProvider>
-          <PreferencesHydrator />
-          <BrandIntroProvider>
-            <DebugWrapper>
-              <SkipToContent />
-              {/* Fixed ambient traveling dots — behind grit */}
-              <FixedTravelingDots />
-              {/* Fixed grit overlay — always on, base texture for all pages */}
-              <div className="grit pointer-events-none fixed inset-x-0 top-0 z-200 h-lvh will-change-transform" />
-              <GritPulseOverlay />
+        <PreferencesHydrator />
+        <BrandIntroProvider>
+          <DebugWrapper>
+            <SkipToContent />
+            {/* Fixed ambient traveling dots — behind grit */}
+            <FixedTravelingDots />
+            {/* Fixed grit overlay — always on, base texture for all pages */}
+            <div className="grit pointer-events-none fixed inset-x-0 top-0 z-200 h-lvh will-change-transform" />
+            <GritPulseOverlay />
 
-              <DevTestNav />
-              <TopNavigation />
-              <main id="main-content z-201">{children}</main>
-              <Footer />
-            </DebugWrapper>
-          </BrandIntroProvider>
-        </TranslationsProvider>
+            <DevTestNav />
+            <TopNavigation />
+            <main id="main-content z-201">{children}</main>
+            <Footer />
+          </DebugWrapper>
+        </BrandIntroProvider>
         <Analytics />
         <SpeedInsights />
       </body>

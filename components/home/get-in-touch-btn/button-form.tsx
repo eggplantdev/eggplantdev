@@ -10,7 +10,7 @@ import { useFormStatus } from "@/hooks/use-form-status";
 import { Spinner } from "@/components/general/spinner";
 import { FieldErrors } from "@/components/ui/field-errors";
 import { SubmitButton } from "@/components/ui/submit-button";
-import { useTranslation } from "@/lib/i18n/hooks/use-translation";
+import strings from "@/data/ui-copy.json";
 
 type ButtonFormPropsT = {
   closeBtn: () => void;
@@ -21,7 +21,7 @@ type ButtonFormPropsT = {
 export function ButtonForm({ closeBtn, open }: ButtonFormPropsT) {
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
-  const { t, locale } = useTranslation("form");
+  const t = strings.form;
 
   const form = useForm({
     defaultValues: {
@@ -31,7 +31,7 @@ export function ButtonForm({ closeBtn, open }: ButtonFormPropsT) {
       onSubmit: quickContactSchema,
     },
     onSubmit: async ({ value }) => {
-      const result = await sendEmail({ ...value, locale });
+      const result = await sendEmail({ ...value });
       setIsError(!result.success);
       setIsSuccess(result.success);
       if (result.success) {
@@ -49,7 +49,7 @@ export function ButtonForm({ closeBtn, open }: ButtonFormPropsT) {
 
   return (
     <>
-      <p className="text-16 w-[170px] pt-6 text-start">{t("quickContactPrompt")}</p>
+      <p className="text-16 w-[170px] pt-6 text-start">{t.quickContactPrompt}</p>
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -62,8 +62,8 @@ export function ButtonForm({ closeBtn, open }: ButtonFormPropsT) {
               <input
                 className="border-copy-muted text-16 placeholder:text-copy-muted mt-6 h-12 w-full border-b outline-none"
                 type="email"
-                placeholder={t("email")}
-                aria-label={t("email")}
+                placeholder={t.email}
+                aria-label={t.email}
                 autoComplete="email"
                 name={field.name}
                 value={field.state.value}

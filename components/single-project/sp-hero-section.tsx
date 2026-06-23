@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { CustomImgServer } from "@/components/general/custom-image/custom-img-server";
 import { SpTitle } from "@/components/single-project/sp-title";
-import { useTranslation } from "@/lib/i18n/hooks/use-translation";
+import strings from "@/data/ui-copy.json";
 
 type SpHeroSectionPropsT = {
   name: string;
@@ -18,14 +18,14 @@ type SpHeroSectionPropsT = {
 export const SpHeroSection = ({ name, slug, mainSection }: SpHeroSectionPropsT) => {
   const firstSlide = mainSection?.slides[0];
   const cats = mainSection?.cats;
-  const { t } = useTranslation("nav");
+  const t = strings.nav;
 
   return (
     <div className="fest-container">
       <div className="">
         <div className="group text-16 mb-1 flex items-center space-x-4">
           <Link href="/">
-            <span className="text-copy-body group-hover:text-copy-strong duration-500">{t("projects")}</span>
+            <span className="text-copy-body group-hover:text-copy-strong duration-500">{t.projects}</span>
           </Link>
         </div>
         <SpTitle name={name} slug={slug} />
