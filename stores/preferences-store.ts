@@ -25,6 +25,9 @@ type PreferencesStoreT = PersistedT & {
   setScale: (scale: number) => void;
   setAnimation: (key: AnimationKeyT, enabled: boolean) => void;
   setLocale: (locale: LocaleT) => void;
+  // Load persisted prefs after mount. MUST run only on the client (in an effect),
+  // never during render — see DEFAULTS below for why.
+  hydrate: () => void;
 };
 
 // ── Detection ──────────────────────────────────────────────
@@ -50,22 +53,17 @@ function getPersisted(): PersistedT | undefined {
 }
 
 // ── Initial state ──────────────────────────────────────────
-function getInitialState(): PersistedT {
-  const saved = getPersisted();
-  if (saved) return saved;
-
-  const reducedMotion = detectReducedMotion();
-
-  const defaults: PersistedT = {
-    theme: "dark",
-    locale: "en",
-    scale: MIN_SCALE,
-    letterAnimations: !reducedMotion,
-  };
-
-  persist(defaults);
-  return defaults;
-}
+// Deterministic defaults — identical on the server and on the client's FIRST render.
+// The store must NOT read localStorage or matchMedia at module load: that would make the
+// client's first render differ from the server HTML (persisted locale/theme vs default),
+// which is exactly the hydration mismatch this replaces. Persisted values are applied
+// later by hydrate(), called from a client effect after mount.
+const DEFAULTS: PersistedT = {
+  theme: "dark",
+  locale: "en",
+  scale: MIN_SCALE,
+  letterAnimations: true,
+};
 
 // ── Apply side effects (theme, font-scale, lang) ───────────
 function applyTheme(theme: ThemeT) {
@@ -81,15 +79,6 @@ function applyLocale(locale: LocaleT) {
 }
 
 // ── Store ──────────────────────────────────────────────────
-const initial = getInitialState();
-
-// Apply side effects at module load (safety net — inline script handles first paint)
-if (typeof document !== "undefined") {
-  applyTheme(initial.theme);
-  applyScale(initial.scale);
-  applyLocale(initial.locale);
-}
-
 function getPersistedSlice(state: PreferencesStoreT): PersistedT {
   return {
     theme: state.theme,
@@ -100,7 +89,17 @@ function getPersistedSlice(state: PreferencesStoreT): PersistedT {
 }
 
 export const usePreferencesStore = create<PreferencesStoreT>()((set, get) => ({
-  ...initial,
+  ...DEFAULTS,
+
+  hydrate: () => {
+    const saved = getPersisted();
+    const next: PersistedT = saved ?? { ...DEFAULTS, letterAnimations: !detectReducedMotion() };
+    applyTheme(next.theme);
+    applyScale(next.scale);
+    applyLocale(next.locale);
+    set(next);
+    if (!saved) persist(next);
+  },
 
   setTheme: (theme) => {
     applyTheme(theme);
