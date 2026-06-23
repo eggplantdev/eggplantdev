@@ -28,7 +28,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       suppressHydrationWarning
       className={`overflow-x-hidden scroll-smooth ${poly.variable} ${theinhardt.variable} ${jetbrainsMono.variable} ${ibmPlexMono.variable} ${firaCode.variable} ${poly.className} ${theinhardt.className}`}
     >
-      <body className="overflow-x-hidden overscroll-none scroll-smooth antialiased" suppressHydrationWarning>
+      <body className="overflow-x-clip overscroll-none scroll-smooth antialiased" suppressHydrationWarning>
         {/* <script dangerouslySetInnerHTML={{ __html: preferencesHydratorScript }} /> */}
         <TranslationsProvider>
           <DebugWrapper>
