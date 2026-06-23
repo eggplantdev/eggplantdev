@@ -10,9 +10,10 @@ type AccordionTriggerPropsT = {
   year: string | undefined;
   isOpen: boolean;
   hasUrl: boolean;
+  nameFontClass: string;
 };
 
-export function AccordionTrigger({ name, year, isOpen, hasUrl }: AccordionTriggerPropsT) {
+export function AccordionTrigger({ name, year, isOpen, hasUrl, nameFontClass }: AccordionTriggerPropsT) {
   return (
     <Accordion.Trigger
       className={cn(
@@ -27,7 +28,7 @@ export function AccordionTrigger({ name, year, isOpen, hasUrl }: AccordionTrigge
             glowClassName="-inset-x-5 -inset-y-3 rounded-full group-hover/trigger:opacity-100"
           >
             <ScrambleText
-              className="text-24 text-hero-title-secondary font-mono uppercase"
+              className={cn("text-24 text-hero-title-secondary uppercase", nameFontClass)}
               text={name}
               triggerOnMount
               beta

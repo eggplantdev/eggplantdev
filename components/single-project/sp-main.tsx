@@ -13,16 +13,13 @@ type SingleProjectMainPropsT = {
 };
 
 export const SingleProjectMain = ({ project }: SingleProjectMainPropsT) => {
-  const { name, sections } = project;
+  const { name, slug, sections } = project;
 
   return (
-    <div className="mx-auto max-w-xxl pt-20 xl:pt-40 ">
+    <div className="max-w-xxl mx-auto pt-20 xl:pt-40">
       {sections.map((section, index) => (
-        <section
-          key={section.type + index}
-          className={"border-b border-gray2 py-40 first:pt-0 last:border-0 "}
-        >
-          <RenderProjectSection section={section} name={name} />
+        <section key={section.type + index} className={"border-gray2 border-b py-40 first:pt-0 last:border-0"}>
+          <RenderProjectSection section={section} name={name} slug={slug} />
         </section>
       ))}
     </div>
@@ -32,23 +29,15 @@ export const SingleProjectMain = ({ project }: SingleProjectMainPropsT) => {
 type RenderProjectSectionPropsT = {
   section: ProjectSectionT;
   name: string;
+  slug: string;
 };
 
-const RenderProjectSection = ({
-  section,
-  name,
-}: RenderProjectSectionPropsT) => {
+const RenderProjectSection = ({ section, name, slug }: RenderProjectSectionPropsT) => {
   switch (section.type) {
     case "main":
-      return <SpHeroSection name={name} mainSection={section} />;
+      return <SpHeroSection name={name} slug={slug} mainSection={section} />;
     case "simple":
-      return (
-        <SimpleSection
-          titleLine={section.titleLine}
-          text={section.text}
-          className="fest-container"
-        />
-      );
+      return <SimpleSection titleLine={section.titleLine} text={section.text} className="fest-container" />;
     case "screenshots":
       return <Screens data={section} />;
     case "video":
@@ -58,12 +47,6 @@ const RenderProjectSection = ({
     case "team":
       return <SpTeam data={section} />;
     case "quote":
-      return (
-        <QuoteSection
-          data={section}
-          singleProjectPage={true}
-          className="fest-container"
-        />
-      );
+      return <QuoteSection data={section} singleProjectPage={true} className="fest-container" />;
   }
 };

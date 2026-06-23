@@ -73,6 +73,9 @@
   --font-mono: var(--font-ibm-plex-mono);
   /* --font-mono: var(--font-fira-code); */
 
+  /* Eggplant Notes' own wordmark font — scoped to that project's name (see get-project-name-font). */
+  --font-eggplant: var(--font-geist-mono);
+
   --font-thein13: var(--font-theinhardt);
 }
 

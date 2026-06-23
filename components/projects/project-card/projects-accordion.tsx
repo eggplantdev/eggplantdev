@@ -6,6 +6,7 @@ import { ProjectT } from "@/types/projects-types";
 import { RoundedSeparator } from "@/components/general/rounded-separator";
 import { AccordionTrigger } from "@/components/projects/project-card/accordion-trigger";
 import { AccordionContentPanel } from "@/components/projects/project-card/accordion-content";
+import { getProjectNameFont } from "@/helpers/get-project-name-font";
 
 type ProjectsAccordionPropsT = {
   projects: ProjectT[];
@@ -44,7 +45,13 @@ function ProjectAccordionItem({ project, isOpen }: ProjectAccordionItemPropsT) {
     <Accordion.Item value={project.uuid} className="group/card">
       <RoundedSeparator className="transition-transform duration-300 group-hover/card:translate-y-[-6px]" />
 
-      <AccordionTrigger name={name} year={year} isOpen={isOpen} hasUrl={!!url} />
+      <AccordionTrigger
+        name={name}
+        year={year}
+        isOpen={isOpen}
+        hasUrl={!!url}
+        nameFontClass={getProjectNameFont(project.slug)}
+      />
 
       <AccordionContentPanel isOpen={isOpen} description={description} tags={tags} url={url} />
     </Accordion.Item>

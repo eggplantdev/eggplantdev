@@ -7,6 +7,7 @@ import { useTranslation } from "@/lib/i18n/hooks/use-translation";
 
 type SpHeroSectionPropsT = {
   name: string;
+  slug: string;
   mainSection?: {
     type: "main";
     cats: { Client: string; Region: string; Year: string; Industry: string };
@@ -14,7 +15,7 @@ type SpHeroSectionPropsT = {
   };
 };
 
-export const SpHeroSection = ({ name, mainSection }: SpHeroSectionPropsT) => {
+export const SpHeroSection = ({ name, slug, mainSection }: SpHeroSectionPropsT) => {
   const firstSlide = mainSection?.slides[0];
   const cats = mainSection?.cats;
   const { t } = useTranslation("nav");
@@ -24,10 +25,10 @@ export const SpHeroSection = ({ name, mainSection }: SpHeroSectionPropsT) => {
       <div className="">
         <div className="group text-16 mb-1 flex items-center space-x-4">
           <Link href="/">
-            <span className="text-copy-body duration-500 group-hover:text-copy-strong">{t("projects")}</span>
+            <span className="text-copy-body group-hover:text-copy-strong duration-500">{t("projects")}</span>
           </Link>
         </div>
-        <SpTitle name={name} />
+        <SpTitle name={name} slug={slug} />
       </div>
 
       {firstSlide && (

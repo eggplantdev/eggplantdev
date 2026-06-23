@@ -1,5 +1,5 @@
 import localFont from "next/font/local";
-import { JetBrains_Mono, IBM_Plex_Mono, Fira_Code } from "next/font/google";
+import { JetBrains_Mono, IBM_Plex_Mono, Fira_Code, Geist_Mono } from "next/font/google";
 
 export const poly = localFont({
   src: "./PolySans-SlimMono.woff2",
@@ -29,5 +29,13 @@ export const ibmPlexMono = IBM_Plex_Mono({
 export const firaCode = Fira_Code({
   subsets: ["latin", "latin-ext"],
   variable: "--font-fira-code",
+  display: "swap",
+});
+
+// The Eggplant Notes app's own wordmark font — used only for that project's name so the portfolio
+// entry matches the live app's branding.
+export const geistMono = Geist_Mono({
+  subsets: ["latin", "latin-ext"],
+  variable: "--font-geist-mono",
   display: "swap",
 });
