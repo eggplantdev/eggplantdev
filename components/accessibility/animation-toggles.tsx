@@ -6,14 +6,13 @@ import { ToggleSwitch } from "./toggle-switch";
 import { cn } from "../../helpers/cn";
 
 export function AnimationToggles({ className }: { className?: string }) {
-  const smoothScroll = usePreferencesStore((s) => s.smoothScroll);
   const letterAnimations = usePreferencesStore((s) => s.letterAnimations);
   const setAnimation = usePreferencesStore((s) => s.setAnimation);
   const theme = usePreferencesStore((s) => s.theme);
   const { t } = useTranslation("accessibility");
 
   const isContrast = theme === "contrast";
-  const values: Record<AnimationKeyT, boolean> = { smoothScroll, letterAnimations };
+  const values: Record<AnimationKeyT, boolean> = { letterAnimations };
   // Letter animations break in contrast mode (mask overlay turns yellow)
   const disabled: Partial<Record<AnimationKeyT, boolean>> = {
     letterAnimations: isContrast,

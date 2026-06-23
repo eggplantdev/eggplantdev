@@ -3,7 +3,7 @@ import type { LocaleT } from "@/lib/i18n/types";
 
 // ── Constants ──────────────────────────────────────────────
 const STORAGE_KEY = "preferences";
-const ANIMATION_KEYS = ["smoothScroll", "letterAnimations"] as const;
+const ANIMATION_KEYS = ["letterAnimations"] as const;
 const THEMES = ["dark", "contrast"] as const;
 const MIN_SCALE = 1;
 const MAX_SCALE = 1.5;
@@ -17,12 +17,10 @@ type PersistedT = {
   theme: ThemeT;
   locale: LocaleT;
   scale: number;
-  smoothScroll: boolean;
   letterAnimations: boolean;
 };
 
 type PreferencesStoreT = PersistedT & {
-  isDesktopSafari: boolean;
   setTheme: (theme: ThemeT) => void;
   setScale: (scale: number) => void;
   setAnimation: (key: AnimationKeyT, enabled: boolean) => void;
@@ -30,14 +28,6 @@ type PreferencesStoreT = PersistedT & {
 };
 
 // ── Detection ──────────────────────────────────────────────
-function detectDesktopSafari(): boolean {
-  if (typeof navigator === "undefined") return false;
-  const ua = navigator.userAgent;
-  const isSafari = /^((?!chrome|android|crios|fxios).)*safari/i.test(ua);
-  const isMobile = /iPhone|iPad|iPod/.test(ua) || (ua.includes("Macintosh") && navigator.maxTouchPoints > 1);
-  return isSafari && !isMobile;
-}
-
 function detectReducedMotion(): boolean {
   if (typeof window === "undefined") return false;
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -64,14 +54,12 @@ function getInitialState(): PersistedT {
   const saved = getPersisted();
   if (saved) return saved;
 
-  const isDesktopSafari = detectDesktopSafari();
   const reducedMotion = detectReducedMotion();
 
   const defaults: PersistedT = {
     theme: "dark",
     locale: "en",
     scale: MIN_SCALE,
-    smoothScroll: !isDesktopSafari && !reducedMotion,
     letterAnimations: !reducedMotion,
   };
 
@@ -107,14 +95,12 @@ function getPersistedSlice(state: PreferencesStoreT): PersistedT {
     theme: state.theme,
     locale: state.locale,
     scale: state.scale,
-    smoothScroll: state.smoothScroll,
     letterAnimations: state.letterAnimations,
   };
 }
 
 export const usePreferencesStore = create<PreferencesStoreT>()((set, get) => ({
   ...initial,
-  isDesktopSafari: typeof navigator !== "undefined" ? detectDesktopSafari() : false,
 
   setTheme: (theme) => {
     applyTheme(theme);

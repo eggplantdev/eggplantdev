@@ -8,9 +8,8 @@
     "toggleLanguage": "Polish",
     "toggleTheme": "Contrast",
     "allAnimations": "All animations",
-    "smoothScroll": "Smooth scroll",
     "letterAnimations": "Letter animations",
-    "animationNotice": "This site uses heavy animations that may feel laggy on older devices or in some browser. Smooth scroll doesn't go well with Safari and is disabled by default. You can control it here.",
+    "animationNotice": "This site uses heavy animations that may feel laggy on older devices or in some browsers. You can control it here.",
     "drawerDismiss": "Got it"
   },
   "common": {

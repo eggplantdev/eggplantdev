@@ -8,7 +8,6 @@ import { TopNavigation } from "@/components/top-navigation/top-navigation";
 import { DebugWrapper } from "@/components/debug-tools/debug-wrapper";
 import { TranslationsProvider } from "@/lib/i18n/translations-provider";
 import { SkipToContent } from "@/components/accessibility/skip-to-content";
-import { SmoothScroll } from "@/components/general/smooth-scroll";
 import { Footer } from "../components/footer/footer";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -40,14 +39,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             <div className="grit pointer-events-none fixed inset-x-0 top-0 z-200 h-lvh will-change-transform" />
             <GritPulseOverlay />
 
-            {/* TopNavigation must stay outside SmoothScroll — toggling smooth scroll
-                remounts the tree, which would reset the menu open/close state */}
             <DevTestNav />
             <TopNavigation />
-            <SmoothScroll>
-              <main id="main-content z-201">{children}</main>
-              <Footer />
-            </SmoothScroll>
+            <main id="main-content z-201">{children}</main>
+            <Footer />
           </DebugWrapper>
         </TranslationsProvider>
         <Analytics />
