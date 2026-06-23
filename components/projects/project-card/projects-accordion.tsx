@@ -15,7 +15,8 @@ type ProjectsAccordionPropsT = {
 // See git history for the implementation (measures offscreen panels, locks minHeight
 // to worst-case expanded height). Temporarily removed to debug calculation issues.
 export function ProjectsAccordion({ projects }: ProjectsAccordionPropsT) {
-  const [openItem, setOpenItem] = useState<string>(projects[0]?.uuid ?? "");
+  // Empty string = all folded; `collapsible` lets the open item close back to this state.
+  const [openItem, setOpenItem] = useState<string>("");
 
   return (
     <Accordion.Root type="single" collapsible value={openItem} onValueChange={setOpenItem} className="flex flex-col">
