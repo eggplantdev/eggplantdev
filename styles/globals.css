@@ -65,6 +65,9 @@
 
   /* Max-width */
   --max-w-xxl: 1920px;
+
+  /* Border radius */
+  --radius-btn: 10px; /* shared corner radius for the get-in-touch CTA */
 }
 
 /* Font families — all resolved at runtime via Next.js CSS variables (injected in layout.tsx) */

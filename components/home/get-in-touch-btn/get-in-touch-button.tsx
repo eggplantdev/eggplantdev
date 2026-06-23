@@ -49,11 +49,11 @@ export const GetInTouchButton = () => {
     >
       <div
         onClick={toggleModal}
-        className="group/btn glow 1280:flex 1280:pointer-events-auto z-201 mb-[120px] ml-auto hidden w-fit max-w-[940px] min-w-[270px] shrink-0 cursor-pointer rounded-[10px] bg-white"
+        className="group/btn glow 1280:flex 1280:pointer-events-auto rounded-btn z-201 mb-[120px] ml-auto hidden w-fit max-w-[940px] min-w-[270px] shrink-0 cursor-pointer bg-white"
       >
         <div
           data-slot="get-in-touch"
-          className={`relative z-10 w-full rounded-[10px] bg-white px-4 py-1 text-black transition-transform duration-300 group-hover/btn:-translate-y-[-2px] lg:px-6 lg:py-4`}
+          className={`rounded-btn relative z-10 w-full bg-white px-4 py-1 text-black transition-transform duration-300 group-hover/btn:-translate-y-[-2px] lg:px-6 lg:py-4`}
         >
           <button
             aria-expanded={open ? "true" : "false"}
