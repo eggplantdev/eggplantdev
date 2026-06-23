@@ -3,13 +3,11 @@
 import nodemailer from "nodemailer";
 import { env } from "@/helpers/env";
 import { buildAutoReplyEmail } from "@/helpers/email-templates/templates/auto-reply";
-import type { LocaleT } from "@/lib/i18n/types";
 
 type SendEmailDataT = {
   name?: string;
   email: string;
   message?: string;
-  locale: LocaleT;
 };
 
 const transporter = nodemailer.createTransport({
@@ -44,8 +42,8 @@ export async function sendEmail(data: SendEmailDataT) {
     await transporter.sendMail({
       from: env.NEXT_PUBLIC_EMAIL_USER,
       to: data.email,
-      subject: data.locale === "pl" ? "Dzięki za wiadomość!" : "Thanks for reaching out!",
-      html: buildAutoReplyEmail(data.locale, data.name),
+      subject: "Thanks for reaching out!",
+      html: buildAutoReplyEmail(data.name),
     });
     return { success: true };
   } catch (err) {

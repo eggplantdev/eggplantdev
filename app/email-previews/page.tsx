@@ -7,14 +7,9 @@ import { notFound } from "next/navigation";
 
 const templates = [
   {
-    id: "auto-reply-en",
-    name: "Auto Reply (EN)",
-    generate: () => buildAutoReplyEmail("en", "Jan", { preview: true }),
-  },
-  {
-    id: "auto-reply-pl",
-    name: "Auto Reply (PL)",
-    generate: () => buildAutoReplyEmail("pl", "Jan", { preview: true }),
+    id: "auto-reply",
+    name: "Auto Reply",
+    generate: () => buildAutoReplyEmail("Jan", { preview: true }),
   },
   {
     id: "blank",
