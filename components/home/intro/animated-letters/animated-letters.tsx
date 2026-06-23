@@ -6,6 +6,7 @@ import { useRef } from "react";
 import useWindowSize from "@/hooks/use-window-size";
 import { usePreferencesStore } from "@/stores/preferences-store";
 import { useI18nContext } from "@/lib/i18n/translations-provider";
+import { cn } from "@/helpers/cn";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,7 +16,7 @@ gsap.registerPlugin(ScrollTrigger);
  * overlay div (.line-mask) on each line and shrinks its width from 103% → 0%.
  * The text is always fully rendered underneath; the mask just covers it.
  */
-export const AnimatedLettersMask = ({ text = "" }) => {
+export const AnimatedLettersMask = ({ text = "", className }: { text?: string; className?: string }) => {
   const lettersRef = useRef<HTMLDivElement>(null);
   const { clientWidth } = useWindowSize();
   const { locale } = useI18nContext();
@@ -77,18 +78,15 @@ export const AnimatedLettersMask = ({ text = "" }) => {
     { scope: lettersRef, dependencies: [clientWidth, isEnabled], revertOnUpdate: true },
   );
 
+  // Layout/width are owned by the parent now (the component used to be the full-bleed top intro; it now
+  // sits beside the portrait below the projects). `className` lets the caller size the column.
   return (
-    <div className={`fest-container`}>
+    <div ref={lettersRef} className={cn("flex w-full flex-col overflow-x-clip", className)}>
       <div
-        ref={lettersRef}
-        className={`flex flex-col overflow-x-clip pr-12 sm:w-[calc(340/360*100vw)] md:w-[calc(590/768*100vw)] md:pt-[120px] md:pr-0 lg:w-[calc(740/1024*100vw)] lg:max-w-[940px]`}
+        id="target-mask"
+        className={`text-hero-title-secondary wrap-break-words text-34 450:text-34 md:text-64 lg:text-80 xl:text-96 font-mono font-medium tracking-tight uppercase ${locale === "pl" ? "leading-[1.2]" : ""}`}
       >
-        <div
-          id="target-mask"
-          className={`text-hero-title-secondary wrap-break-words text-34 450:text-34 md:text-64 lg:text-80 xl:text-96 font-mono font-medium tracking-tight uppercase ${locale === "pl" ? "leading-[1.2]" : ""}`}
-        >
-          {text}
-        </div>
+        {text}
       </div>
     </div>
   );

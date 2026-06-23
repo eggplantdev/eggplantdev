@@ -7,7 +7,7 @@ import { FixedTravelingDots } from "@/components/animations/fixed-traveling-dots
 import { GritPulseOverlay } from "@/components/animations/grit-pulse-overlay/grit-pulse-overlay";
 
 import { AnimatedBrandLogo } from "./animated-brand-logo";
-import { ALWAYS_PLAY, SCATTER_MS, SEEN_KEY, VEIL_FADE_S } from "./brand-intro-config";
+import { ALWAYS_PLAY, HERO_MODE, SCATTER_MS, SEEN_KEY, VEIL_FADE_S } from "./brand-intro-config";
 import { BrandIntroContext, WORDMARK } from "./brand-intro-context";
 import { getBrandIntroPhase, getBrandIntroServerPhase, subscribeBrandIntro } from "./brand-intro-store";
 import { IntroWordmark } from "./intro-wordmark";
@@ -30,15 +30,18 @@ export function BrandIntroProvider({ children }: { children: ReactNode }) {
   // getServerSnapshot resolves to 'idle' so SSR + first client render match; the store flips us after.
   const phase = useSyncExternalStore(subscribeBrandIntro, getBrandIntroPhase, getBrandIntroServerPhase);
 
-  // Lock scroll while the opaque veil is up — the page underneath shouldn't move during the show.
+  const staticHero = HERO_MODE === "static";
+
+  // Lock scroll while the opaque veil is up — the page underneath shouldn't move during the show. Static
+  // mode has no veil, so there's nothing to lock behind.
   useEffect(() => {
-    if (phase !== "splash" && phase !== "morph") return;
+    if (staticHero || (phase !== "splash" && phase !== "morph")) return;
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => {
       document.body.style.overflow = prev;
     };
-  }, [phase]);
+  }, [phase, staticHero]);
 
   return (
     <BrandIntroContext.Provider value={phase}>
@@ -51,11 +54,11 @@ export function BrandIntroProvider({ children }: { children: ReactNode }) {
           morph (content hidden until the logo lands), fades out on 'reveal', and unmounts on 'done'. On
           the skip path it unmounts straight from 'idle' with no fade. z above the grit (z-200) and nav
           (z-99999) so nothing in this portfolio's stack pokes through the veil. */}
-      {phase !== "skip" && phase !== "done" && (
+      {!staticHero && phase !== "skip" && phase !== "done" && (
         <motion.div
           key="veil"
           data-brand-veil
-          className="bg-bgc fixed inset-0 z-[100000] overflow-hidden"
+          className="bg-bgc fixed inset-0 z-100000 overflow-hidden"
           initial={false}
           animate={{ opacity: phase === "reveal" ? 0 : 1 }}
           transition={{ duration: VEIL_FADE_S, ease: "easeOut" }}
@@ -73,17 +76,14 @@ export function BrandIntroProvider({ children }: { children: ReactNode }) {
       {/* Splash lockup — logo (layoutId, morphs up to the nav) + tagline (no layoutId; it just fades out
           with the veil). Above the veil so it reads crisp. Unmounts the instant we leave 'splash' so the
           shared-layoutId handoff to the nav logo is clean. */}
-      {phase === "splash" && (
-        <div className="pointer-events-none fixed inset-0 z-[100001] flex flex-col items-center justify-center gap-6 px-6">
+      {!staticHero && phase === "splash" && (
+        <div className="pointer-events-none fixed inset-0 z-100001 flex flex-col items-center justify-center gap-6 px-6">
           <motion.div layoutId="brand-logo" className="size-44 sm:size-60">
             <AnimatedBrandLogo className="size-full" />
           </motion.div>
-          {/* Hold the cascade until the dots have assembled. */}
-          <IntroWordmark
-            text={WORDMARK}
-            delay={SCATTER_MS / 1000}
-            className="max-w-[20rem] text-center sm:max-w-[34rem]"
-          />
+          {/* Hold the cascade until the dots have assembled. layoutId hands the tagline off to the hero
+              lockup so it glides down with the logo and stays on the page. */}
+          <IntroWordmark text={WORDMARK} delay={SCATTER_MS / 1000} layoutId="brand-wordmark" />
         </div>
       )}
     </BrandIntroContext.Provider>

@@ -15,10 +15,11 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { DevTestNav } from "@/components/test/dev-test-nav";
 import { FixedTravelingDots } from "@/components/animations/fixed-traveling-dots/fixed-traveling-dots";
 import { GritPulseOverlay } from "../components/animations/grit-pulse-overlay/grit-pulse-overlay";
+import { BrandIntroProvider } from "@/components/brand/brand-intro-provider";
 
 export const metadata: Metadata = {
   title: "Egggplants in space",
-  description: "Building apps, shipping eggplants to space",
+  description: "Websites and apps for taste seekers",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
@@ -32,19 +33,21 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body className="overflow-x-clip overscroll-none scroll-smooth antialiased" suppressHydrationWarning>
         <TranslationsProvider>
           <PreferencesHydrator />
-          <DebugWrapper>
-            <SkipToContent />
-            {/* Fixed ambient traveling dots — behind grit */}
-            <FixedTravelingDots />
-            {/* Fixed grit overlay — always on, base texture for all pages */}
-            <div className="grit pointer-events-none fixed inset-x-0 top-0 z-200 h-lvh will-change-transform" />
-            <GritPulseOverlay />
+          <BrandIntroProvider>
+            <DebugWrapper>
+              <SkipToContent />
+              {/* Fixed ambient traveling dots — behind grit */}
+              <FixedTravelingDots />
+              {/* Fixed grit overlay — always on, base texture for all pages */}
+              <div className="grit pointer-events-none fixed inset-x-0 top-0 z-200 h-lvh will-change-transform" />
+              <GritPulseOverlay />
 
-            <DevTestNav />
-            <TopNavigation />
-            <main id="main-content z-201">{children}</main>
-            <Footer />
-          </DebugWrapper>
+              <DevTestNav />
+              <TopNavigation />
+              <main id="main-content z-201">{children}</main>
+              <Footer />
+            </DebugWrapper>
+          </BrandIntroProvider>
         </TranslationsProvider>
         <Analytics />
         <SpeedInsights />
