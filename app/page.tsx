@@ -18,7 +18,7 @@ export default function HomePage() {
   return (
     <div className="bg-bgc text-primary">
       <GradientMask />
-      <div className="grid grid-cols-1">
+      <div className="grid grid-cols-1 gap-y-32 md:gap-y-48">
         <AnimatedLettersMask text={introTxt} />
 
         <ProjectsSection data={commercialWork} className="fest-container" />
