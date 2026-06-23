@@ -55,14 +55,21 @@ Original brainstorm + plan live in `docs/superpowers/`:
 
 ### Known follow-ups
 
-- Polish locale still flips content after hydration; the SplitType-based intro
-  (`AnimatedLettersMask`) does not re-split on a post-mount locale change, so it
-  stays in the server language. Addressed by the `disable-locale-temporarily`
-  change (pin locale to `en`).
+- ✅ Resolved — Polish locale hydration flip: pinned to `en` in the
+  `disable-locale-temporarily` change (persisted locale ignored, toggle hidden).
+  The SplitType intro re-split caveat only matters if/when the locale toggle
+  returns; tracked in that change's restore notes.
 - `overscroll-none` on `<body>` is now a no-op (body is no longer a scroll
   container); move to `<html>` or drop if overscroll containment is wanted.
-- `public/logos/eggplant-logo.png` is now unreferenced by the favicon — verify
-  no other consumers, then remove if orphaned.
+- The nav wordmark has since returned as `eggplant_dev` via an in-flight
+  brand-intro splash/morph feature (`components/brand/brand-intro-*`,
+  `intro-wordmark.tsx`). That feature is not yet documented — its own change
+  record is pending until it lands. This record's "mark only, no wordmark" line
+  describes the original port, not the current nav.
+
+Note: `public/logos/eggplant-logo.png` is NOT orphaned — still used by
+`spinner.tsx`, `page-preloader.tsx`, and `eggplant-image.tsx`. The favicon
+switch (`app/icon.tsx`) only stopped _the favicon_ from reading it.
 
 ### Out of scope
 
