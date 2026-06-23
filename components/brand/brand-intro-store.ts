@@ -1,38 +1,40 @@
-import { type BrandIntroPhaseT } from "./brand-intro-context";
-import { ALWAYS_PLAY, INTRO_MS, MORPH_MS, SEEN_KEY, VEIL_FADE_MS } from "./brand-intro-config";
+"use client";
 
-// The intro is its own state machine living OUTSIDE React, advanced by timers and read via
-// useSyncExternalStore. Modeling it as an external store (rather than render 'idle' → setState the real
-// phase in a mount effect) is what keeps the decision off React's "setState synchronously in an effect →
-// cascading render" path: React never sets state here, it just subscribes and re-reads on notify.
-let phase: BrandIntroPhaseT = "idle";
+import { useSyncExternalStore } from "react";
+
+import { ALWAYS_PLAY, INTRO_DONE_MS, SEEN_KEY } from "./brand-intro-config";
+
+// The brand intro's single piece of shared state: has the hero intro finished playing, so the nav
+// (logo + chrome) may fade in? It lives OUTSIDE React — a tiny store advanced by one timer and read via
+// useSyncExternalStore — so the decision never rides React's "setState in a mount effect → cascading
+// render" path. Both the nav logo and the nav chrome subscribe to the one timeline.
+let done = false;
 let started = false;
 const listeners = new Set<() => void>();
 
-function set(next: BrandIntroPhaseT) {
-  phase = next;
+function finish() {
+  done = true;
   for (const notify of listeners) notify();
 }
 
-// Reduced-motion and session state aren't knowable during SSR, so the timeline can only start on the
+// Reduced-motion and session state aren't knowable during SSR, so the timer can only start on the
 // client — kicked off the first time a consumer subscribes (post-hydration). The `started` guard makes
-// it idempotent: Strict Mode's double subscribe/unsubscribe and any second consumer both reuse the one
-// timeline instead of spawning a second set of timers.
+// it idempotent: Strict Mode's double subscribe and a second consumer both reuse the one timeline.
 function start() {
   if (started) return;
   started = true;
 
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  // Once per tab session (sessionStorage clears on tab close → fresh tab/incognito replays).
   let seen = false;
   try {
     seen = sessionStorage.getItem(SEEN_KEY) != null;
   } catch {
-    // sessionStorage throws in some privacy modes — failing open = intro plays.
+    // sessionStorage throws in some privacy modes — failing open = the intro plays.
   }
 
+  // Reduced-motion and returning-this-session visitors get the nav immediately, with no wait.
   if (reduced || (!ALWAYS_PLAY && seen)) {
-    set("skip");
+    finish();
     return;
   }
 
@@ -42,16 +44,12 @@ function start() {
     // ignore: see above
   }
 
-  // splash → morph (veil still opaque) → reveal (veil dissolves) → done (cleanup). No clearTimeout: the
-  // provider is a root-level singleton that mounts once per page load, so the timeline never needs to be
-  // torn down — the `started` guard already makes it run exactly once.
-  set("splash");
-  window.setTimeout(() => set("morph"), INTRO_MS);
-  window.setTimeout(() => set("reveal"), INTRO_MS + MORPH_MS);
-  window.setTimeout(() => set("done"), INTRO_MS + MORPH_MS + VEIL_FADE_MS);
+  // No clearTimeout: the subscribers are root-level singletons that mount once per load, and the
+  // `started` guard already makes this run exactly once.
+  window.setTimeout(finish, INTRO_DONE_MS);
 }
 
-export function subscribeBrandIntro(onChange: () => void) {
+function subscribe(onChange: () => void) {
   listeners.add(onChange);
   start();
   return () => {
@@ -59,7 +57,11 @@ export function subscribeBrandIntro(onChange: () => void) {
   };
 }
 
-export const getBrandIntroPhase = () => phase;
-// SSR + first client (hydration) render resolve to 'idle' so the markup matches; the post-hydration
-// subscribe runs start(), which notifies and flips us to splash/skip.
-export const getBrandIntroServerPhase = (): BrandIntroPhaseT => "idle";
+// SSR + first client (hydration) render resolve to false so the markup matches; the post-hydration
+// subscribe runs start(), which flips us to done — immediately on the skip paths, else after the timer.
+const getSnapshot = () => done;
+const getServerSnapshot = () => false;
+
+export function useIntroDone() {
+  return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+}

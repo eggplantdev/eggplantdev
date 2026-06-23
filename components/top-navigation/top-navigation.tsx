@@ -12,7 +12,7 @@ import { useMinMD } from "@/hooks/use-media-query";
 import { RoundedSeparator } from "@/components/general/rounded-separator";
 import { AnimationToggles } from "@/components/accessibility/animation-toggles";
 import strings from "@/data/ui-copy.json";
-import { useBrandIntro } from "@/components/brand/brand-intro-context";
+import { useIntroDone } from "@/components/brand/brand-intro-store";
 
 export function TopNavigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,13 +20,8 @@ export function TopNavigation() {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const isDesktop = useMinMD();
   const t = strings.accessibility;
-  const phase = useBrandIntro();
-  // The brand intro veil is opaque through idle → splash → morph; keep the hamburger/dropdown out of
-  // sight behind it so no stray chrome floats over the splash. The logo participates in the morph.
-  const chromeHidden = phase === "idle" || phase === "splash" || phase === "morph";
-  // Lift the logo's stacking context above the veil (z-100000) while the splash logo morphs into it,
-  // otherwise the nav's z-99999 context would trap the morph target behind the still-opaque veil.
-  const logoLifted = phase === "morph" || phase === "reveal";
+  // Keep the hamburger/dropdown out of sight while the hero intro plays, then reveal them with the logo.
+  const chromeHidden = !useIntroDone();
   useClickOutside([menuRef, buttonRef], () => {
     if (isDesktop) setIsOpen(false);
   });
@@ -41,8 +36,8 @@ export function TopNavigation() {
 
   return (
     <>
-      {/* Logo — animated eggplant brand mark, always visible (and the splash's morph target) */}
-      <div className={`pointer-events-none fixed top-0 right-0 left-0 ${logoLifted ? "z-100001" : "z-99999"}`}>
+      {/* Logo — eggplant brand mark; fades in with the rest of the nav once the hero intro is done */}
+      <div className="pointer-events-none fixed top-0 right-0 left-0 z-99999">
         <div className="fest-container flex w-full items-start">
           <EggplantLogo />
         </div>
