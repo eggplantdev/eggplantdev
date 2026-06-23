@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import type { LocaleT } from "@/lib/i18n/types";
+import { LOCALE_ENABLED, ACTIVE_LOCALE } from "@/lib/i18n/config";
 
 // ── Constants ──────────────────────────────────────────────
 const STORAGE_KEY = "preferences";
@@ -94,6 +95,8 @@ export const usePreferencesStore = create<PreferencesStoreT>()((set, get) => ({
   hydrate: () => {
     const saved = getPersisted();
     const next: PersistedT = saved ?? { ...DEFAULTS, letterAnimations: !detectReducedMotion() };
+    // Single-locale pin: ignore any persisted locale while disabled (see lib/i18n/config).
+    if (!LOCALE_ENABLED) next.locale = ACTIVE_LOCALE;
     applyTheme(next.theme);
     applyScale(next.scale);
     applyLocale(next.locale);
@@ -120,6 +123,8 @@ export const usePreferencesStore = create<PreferencesStoreT>()((set, get) => ({
   },
 
   setLocale: (locale) => {
+    // No-op while the single-locale pin is active (see lib/i18n/config).
+    if (!LOCALE_ENABLED) return;
     applyLocale(locale);
     set({ locale });
     persist(getPersistedSlice({ ...get(), locale }));
