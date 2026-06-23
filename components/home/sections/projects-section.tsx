@@ -4,7 +4,8 @@ import { cn } from "@/helpers/cn";
 import { ProjectsAccordion } from "@/components/projects/project-card/projects-accordion";
 import { SimpleSection } from "@/components/home/sections/simple-section";
 import { ProjectsSectionT } from "@/types/home-page-types";
-import { useLocalizedData } from "@/hooks/use-localized-data";
+import projectsData from "@/data/projects.en.json";
+import type { ProjectT } from "@/types/projects-types";
 
 type ProjectsSectionPropsT = {
   data: ProjectsSectionT;
@@ -12,7 +13,7 @@ type ProjectsSectionPropsT = {
 };
 
 export const ProjectsSection = ({ data, className }: ProjectsSectionPropsT) => {
-  const { projects } = useLocalizedData("projects");
+  const { projects } = projectsData as { projects: ProjectT[] };
 
   const filtered = data.filterCategory ? projects.filter((p) => p.category === data.filterCategory) : projects;
 
