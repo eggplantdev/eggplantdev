@@ -1,37 +1,11 @@
 "use client";
 
-import { useRef } from "react";
-import { gsap } from "gsap";
-import { useGSAP } from "@gsap/react";
 import Link from "next/link";
-import { EggplantImage, type EggplantPresetT } from "@/components/general/eggplant-image";
+import { AnimatedBrandLogo } from "@/components/brand/animated-brand-logo";
+import { cn } from "@/helpers/cn";
 
-export function EggplantLogo({
-  className,
-  link = true,
-}: {
-  className?: string;
-  link?: boolean;
-  preset?: EggplantPresetT;
-}) {
-  const wrapperRef = useRef<HTMLDivElement>(null);
-
-  // Fade-in is logo-specific, not part of EggplantImage
-  useGSAP(() => {
-    if (!wrapperRef.current) return;
-
-    gsap.to(wrapperRef.current, {
-      opacity: 1,
-      duration: 0.6,
-      ease: "power2.out",
-    });
-  }, []);
-
-  const eggplantLogo = (
-    <div ref={wrapperRef} className="opacity-0">
-      <EggplantImage sizeClass="size-10 sm:size-20 lg:size-32" className={className} preset={"silver"} priority />
-    </div>
-  );
+export function EggplantLogo({ className, link = true }: { className?: string; link?: boolean }) {
+  const eggplantLogo = <AnimatedBrandLogo className={cn("size-10 sm:size-20 lg:size-32", className)} />;
 
   if (!link) return eggplantLogo;
 
