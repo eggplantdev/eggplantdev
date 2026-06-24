@@ -14,6 +14,10 @@
      </svg>
 */
 
+"use client";
+
+import { useReduceMotion } from "@/hooks/use-reduce-motion";
+
 /* ── Types ── */
 
 export type DotGradientT = {
@@ -40,7 +44,12 @@ export function TravelingDots({
   gradients: readonly DotGradientT[];
   paths: readonly DotPathT[];
 }) {
+  const reduceMotion = useReduceMotion();
   const totalDots = paths.length;
+
+  // SMIL can't be killed by CSS, so drop the whole layer when motion is reduced. Gating here (not at
+  // each call site) keeps every consumer — including the always-on ambient FixedTravelingDots — honest.
+  if (reduceMotion) return null;
 
   return (
     <>

@@ -7,15 +7,25 @@
 // `entrance={false}` renders the mark already settled (no scatter, glow at rest).
 
 import { useId } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 
 import { cn } from "@/helpers/cn";
+import { useReduceMotion } from "@/hooks/use-reduce-motion";
 
 import { buildBrandDots, DOT_R, rand, scatter, VIEWBOX } from "./brand-mark-dots";
 
 const GLOW = 0.9; // 0..1 bloom intensity
 const REST_BLUR = GLOW * DOT_R * 1.8; // resting glow blur
 const FLIGHT_BLUR = REST_BLUR * 3.2; // bigger bloom while the dots are still flying in
+
+// Each dot's flight geometry is index-hashed and prop-independent, so derive it once at module load
+// rather than per render — every instance and every render share the same array.
+const DOTS = buildBrandDots().map((d, i) => ({
+  ...d,
+  from: scatter(i, d.cx, d.cy),
+  // Stagger by a hashed delay + a gentle index ramp so dots don't all land at once.
+  delay: i * 0.03 + rand(i * 3 + 7) * 0.35,
+}));
 
 type AnimatedBrandLogoPropsT = {
   className?: string;
@@ -24,26 +34,16 @@ type AnimatedBrandLogoPropsT = {
 };
 
 export function AnimatedBrandLogo({ className, entrance = true }: AnimatedBrandLogoPropsT) {
-  const reduced = useReducedMotion();
+  const reduced = useReduceMotion();
   // Unique per instance — a fixed id collides with a second copy of this logo on screen, and
   // url(#id) resolves to the first match.
   const filterId = useId();
   const animate = entrance && !reduced;
 
-  // Precompute each dot's flight geometry once: scatter() and the stagger delay both hash through
-  // Math.sin, and the layers below render this same data twice (blurred glow + sharp), so deriving
-  // it per layer would double the work and risk the two layers drifting out of sync.
-  const dots = buildBrandDots().map((d, i) => ({
-    ...d,
-    from: scatter(i, d.cx, d.cy),
-    // Stagger by a hashed delay + a gentle index ramp so dots don't all land at once.
-    delay: i * 0.03 + rand(i * 3 + 7) * 0.35,
-  }));
-
   // One layer of <motion.circle>s; rendered twice (blurred glow behind, sharp in front) with
   // identical motion props so both stay perfectly in sync through the flight.
   const renderDots = () =>
-    dots.map((d) => (
+    DOTS.map((d) => (
       <motion.circle
         key={`${d.cx}-${d.cy}`}
         r={d.r}
