@@ -2,26 +2,25 @@ import { create } from "zustand";
 
 // ── Constants ──────────────────────────────────────────────
 const STORAGE_KEY = "preferences";
-const ANIMATION_KEYS = ["letterAnimations"] as const;
 const THEMES = ["dark", "contrast"] as const;
 const MIN_SCALE = 1;
 const MAX_SCALE = 1.5;
 const FONT_STEP = 0.05;
 
 // ── Types ──────────────────────────────────────────────────
-type AnimationKeyT = (typeof ANIMATION_KEYS)[number];
 type ThemeT = (typeof THEMES)[number];
 
 type PersistedT = {
   theme: ThemeT;
   scale: number;
-  letterAnimations: boolean;
+  // Master "kill all animations" switch. true = motion suppressed site-wide.
+  reduceMotion: boolean;
 };
 
 type PreferencesStoreT = PersistedT & {
   setTheme: (theme: ThemeT) => void;
   setScale: (scale: number) => void;
-  setAnimation: (key: AnimationKeyT, enabled: boolean) => void;
+  setReduceMotion: (reduceMotion: boolean) => void;
   // Load persisted prefs after mount. MUST run only on the client (in an effect),
   // never during render — see DEFAULTS below for why.
   hydrate: () => void;
@@ -39,7 +38,7 @@ function persist(state: PersistedT) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
 }
 
-function getPersisted(): PersistedT | undefined {
+function getPersisted(): Partial<PersistedT> | undefined {
   if (typeof localStorage === "undefined") return undefined;
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
@@ -58,10 +57,10 @@ function getPersisted(): PersistedT | undefined {
 const DEFAULTS: PersistedT = {
   theme: "dark",
   scale: MIN_SCALE,
-  letterAnimations: true,
+  reduceMotion: false,
 };
 
-// ── Apply side effects (theme, font-scale) ─────────────────
+// ── Apply side effects (theme, font-scale, reduce-motion) ──
 function applyTheme(theme: ThemeT) {
   document.documentElement.setAttribute("data-theme", theme);
 }
@@ -70,12 +69,17 @@ function applyScale(scale: number) {
   document.documentElement.style.setProperty("--font-scale", String(scale));
 }
 
+// Drives the CSS kill-switch in globals.css (html[data-reduce-motion="true"]).
+function applyReduceMotion(reduceMotion: boolean) {
+  document.documentElement.setAttribute("data-reduce-motion", reduceMotion ? "true" : "false");
+}
+
 // ── Store ──────────────────────────────────────────────────
 function getPersistedSlice(state: PreferencesStoreT): PersistedT {
   return {
     theme: state.theme,
     scale: state.scale,
-    letterAnimations: state.letterAnimations,
+    reduceMotion: state.reduceMotion,
   };
 }
 
@@ -84,9 +88,16 @@ export const usePreferencesStore = create<PreferencesStoreT>()((set, get) => ({
 
   hydrate: () => {
     const saved = getPersisted();
-    const next: PersistedT = saved ?? { ...DEFAULTS, letterAnimations: !detectReducedMotion() };
+    // First visit (or a legacy payload without reduceMotion) seeds from the OS preference.
+    const reduceMotion = saved?.reduceMotion ?? detectReducedMotion();
+    const next: PersistedT = {
+      theme: saved?.theme ?? DEFAULTS.theme,
+      scale: saved?.scale ?? DEFAULTS.scale,
+      reduceMotion,
+    };
     applyTheme(next.theme);
     applyScale(next.scale);
+    applyReduceMotion(next.reduceMotion);
     set(next);
     if (!saved) persist(next);
   },
@@ -104,11 +115,12 @@ export const usePreferencesStore = create<PreferencesStoreT>()((set, get) => ({
     persist(getPersistedSlice({ ...get(), scale: clamped }));
   },
 
-  setAnimation: (key, enabled) => {
-    set({ [key]: enabled });
-    persist(getPersistedSlice({ ...get(), [key]: enabled }));
+  setReduceMotion: (reduceMotion) => {
+    applyReduceMotion(reduceMotion);
+    set({ reduceMotion });
+    persist(getPersistedSlice({ ...get(), reduceMotion }));
   },
 }));
 
-export { ANIMATION_KEYS, THEMES, MIN_SCALE, MAX_SCALE, FONT_STEP };
-export type { AnimationKeyT, ThemeT };
+export { THEMES, MIN_SCALE, MAX_SCALE, FONT_STEP };
+export type { ThemeT };

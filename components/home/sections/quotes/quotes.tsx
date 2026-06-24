@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import { cn } from "@/helpers/cn";
+import { useReduceMotion } from "@/hooks/use-reduce-motion";
 import { QuoteT } from "@/types/home-page-types";
 
 const AUTOPLAY_DELAY = 10000;
@@ -13,15 +14,17 @@ type QuotesPropsT = {
 export const Quotes = ({ data }: QuotesPropsT) => {
   const quoteRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const reduceMotion = useReduceMotion();
 
   const next = useCallback(() => {
     setActiveIndex((prev) => (prev + 1) % data.length);
   }, [data.length]);
 
   useEffect(() => {
+    if (reduceMotion) return;
     const id = setInterval(next, AUTOPLAY_DELAY);
     return () => clearInterval(id);
-  }, [next]);
+  }, [next, reduceMotion]);
 
   return (
     <section ref={quoteRef} className={`fest-grid group relative`}>

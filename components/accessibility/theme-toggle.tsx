@@ -7,15 +7,12 @@ import { ToggleSwitch } from "./toggle-switch";
 export function ThemeToggle() {
   const theme = usePreferencesStore((s) => s.theme);
   const setTheme = usePreferencesStore((s) => s.setTheme);
-  const setAnimation = usePreferencesStore((s) => s.setAnimation);
   const t = strings.accessibility;
 
   const isContrast = theme === "contrast";
 
   const handleToggle = (toContrast: boolean) => {
     setTheme(toContrast ? "contrast" : "dark");
-    // Contrast mode disables letter animations for accessibility
-    setAnimation("letterAnimations", !toContrast);
   };
 
   return (

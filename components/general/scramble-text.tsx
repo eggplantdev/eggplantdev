@@ -5,7 +5,7 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { useEffect, useRef } from "react";
 import { cn } from "@/helpers/cn";
-import { usePreferencesStore } from "@/stores/preferences-store";
+import { useReduceMotion } from "@/hooks/use-reduce-motion";
 import { ScrambleTextBeta } from "@/components/general/scramble-text-beta";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -114,7 +114,7 @@ const ScrambleTextDefault = ({ text, className, triggerOnMount = false }: Omit<S
   const resolvedRef = useRef(false);
   // Keeps refresh/HMR sync logic from interrupting an active animation
   const stateRef = useRef<"idle" | "scrambling-in" | "scrambling-out">("idle");
-  const isEnabled = usePreferencesStore((s) => s.letterAnimations);
+  const isEnabled = !useReduceMotion();
 
   // Recalculate trigger positions after re-renders where the useGSAP effect
   // did NOT run (parent HMR, unrelated state change). The effect handles its

@@ -5,7 +5,7 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import { cn } from "@/helpers/cn";
-import { usePreferencesStore } from "@/stores/preferences-store";
+import { useReduceMotion } from "@/hooks/use-reduce-motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -36,7 +36,7 @@ export const ScrambleTextBeta = ({ text, className, triggerOnMount = false }: Sc
   const generationRef = useRef(0);
   const resolvedRef = useRef(false);
   const stateRef = useRef<"idle" | "scrambling-in" | "scrambling-out">("idle");
-  const isEnabled = usePreferencesStore((s) => s.letterAnimations);
+  const isEnabled = !useReduceMotion();
 
   useGSAP(
     () => {

@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import { useReduceMotion } from "@/hooks/use-reduce-motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,8 +13,10 @@ gsap.registerPlugin(ScrollTrigger);
  */
 export function useScrollFadeOut() {
   const ref = useRef<HTMLElement>(null);
+  const reduceMotion = useReduceMotion();
 
   useGSAP(() => {
+    if (reduceMotion) return;
     gsap.to(ref.current, {
       opacity: 0,
       scale: 0.85,
@@ -24,7 +27,7 @@ export function useScrollFadeOut() {
         scrub: 1,
       },
     });
-  }, []);
+  }, [reduceMotion]);
 
   return ref;
 }

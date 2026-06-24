@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import { bg } from "zod/v4/locales";
+import { useReduceMotion } from "@/hooks/use-reduce-motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -29,9 +29,11 @@ type UseScrollBgOptionsT = {
 export function useScrollBg() {
   const bgcRef = useRef(null);
   const bgcContainer = useRef(null);
+  const reduceMotion = useReduceMotion();
 
   useGSAP(
     () => {
+      if (reduceMotion) return;
       gsap.to(bgcRef.current, {
         opacity: "0",
         scrollTrigger: {
@@ -42,7 +44,7 @@ export function useScrollBg() {
         },
       });
     },
-    { scope: bgcContainer },
+    { scope: bgcContainer, dependencies: [reduceMotion] },
   );
   return { bgcContainer, bgcRef };
 }

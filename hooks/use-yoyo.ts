@@ -1,7 +1,7 @@
 import { useRef, RefObject } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
-import { usePrefersReducedMotion } from "@/hooks/use-media-query";
+import { useReduceMotion } from "@/hooks/use-reduce-motion";
 
 type UseYoyoOptionsT = {
   /** Vertical offset in px (default: -16) */
@@ -26,10 +26,10 @@ export function useYoyo(options: UseYoyoOptionsT = {}) {
   const { y = -16, duration = 1.8, ease = "sine.inOut", disabled = false } = options;
   const internalRef = useRef<HTMLElement | null>(null);
   const ref = options.ref ?? internalRef;
-  const prefersReducedMotion = usePrefersReducedMotion();
+  const reduceMotion = useReduceMotion();
 
   useGSAP(() => {
-    if (!ref.current || prefersReducedMotion || disabled) return;
+    if (!ref.current || reduceMotion || disabled) return;
 
     gsap.to(ref.current, {
       y,
@@ -38,7 +38,7 @@ export function useYoyo(options: UseYoyoOptionsT = {}) {
       yoyo: true,
       repeat: -1,
     });
-  }, [prefersReducedMotion, disabled]);
+  }, [reduceMotion, disabled]);
 
   return ref;
 }

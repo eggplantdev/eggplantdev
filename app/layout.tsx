@@ -8,6 +8,7 @@ import { TopNavigation } from "@/components/top-navigation/top-navigation";
 import { DebugWrapper } from "@/components/debug-tools/debug-wrapper";
 import { SkipToContent } from "@/components/accessibility/skip-to-content";
 import { PreferencesHydrator } from "@/components/general/preferences-hydrator";
+import { MotionProvider } from "@/components/general/motion-provider";
 import { Footer } from "../components/footer/footer";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -30,19 +31,21 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     >
       <body className="overflow-x-clip overscroll-none scroll-smooth antialiased" suppressHydrationWarning>
         <PreferencesHydrator />
-        <DebugWrapper>
-          <SkipToContent />
-          {/* Fixed ambient traveling dots — behind grit */}
-          <FixedTravelingDots />
-          {/* Fixed grit overlay — always on, base texture for all pages */}
-          <div className="grit pointer-events-none fixed inset-x-0 top-0 z-200 h-lvh will-change-transform" />
-          <GritPulseOverlay />
+        <MotionProvider>
+          <DebugWrapper>
+            <SkipToContent />
+            {/* Fixed ambient traveling dots — behind grit */}
+            <FixedTravelingDots />
+            {/* Fixed grit overlay — always on, base texture for all pages */}
+            <div className="grit pointer-events-none fixed inset-x-0 top-0 z-200 h-lvh will-change-transform" />
+            <GritPulseOverlay />
 
-          <DevTestNav />
-          <TopNavigation />
-          <main id="main-content z-201">{children}</main>
-          <Footer />
-        </DebugWrapper>
+            <DevTestNav />
+            <TopNavigation />
+            <main id="main-content z-201">{children}</main>
+            <Footer />
+          </DebugWrapper>
+        </MotionProvider>
         <Analytics />
         <SpeedInsights />
       </body>

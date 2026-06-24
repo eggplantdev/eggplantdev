@@ -442,3 +442,29 @@ textarea:-webkit-autofill {
 [data-brand-intro="skip"] [data-brand-veil] {
   display: none;
 }
+
+/* === Reduced motion =================================================== */
+/* Master switch (data-reduce-motion="true" on <html>, driven by the prefs
+   store) and the OS prefers-reduced-motion setting both neutralize CSS
+   keyframe animations + transitions site-wide. JS-driven motion (GSAP,
+   Framer Motion, SVG SMIL, autoplay timers) is gated separately in JS via
+   useReduceMotion(). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html[data-reduce-motion="true"] *,
+html[data-reduce-motion="true"] *::before,
+html[data-reduce-motion="true"] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}

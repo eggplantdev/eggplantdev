@@ -1,7 +1,7 @@
 import { RefObject, useRef } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
-import { usePrefersReducedMotion } from "@/hooks/use-media-query";
+import { useReduceMotion } from "@/hooks/use-reduce-motion";
 
 export type ZeroGravityModeT =
   /** Slow rotation + drift on X/Y — like an object tumbling in microgravity */
@@ -23,10 +23,10 @@ export function useZeroGravity(options: UseZeroGravityOptionsT = {}) {
   const { mode = "tumble", intensity = 1, disabled = false } = options;
   const internalRef = useRef<HTMLElement | null>(null);
   const ref = options.ref ?? internalRef;
-  const prefersReducedMotion = usePrefersReducedMotion();
+  const reduceMotion = useReduceMotion();
 
   useGSAP(() => {
-    if (!ref.current || prefersReducedMotion || disabled) return;
+    if (!ref.current || reduceMotion || disabled) return;
     const el = ref.current;
     const s = intensity;
 
@@ -73,7 +73,7 @@ export function useZeroGravity(options: UseZeroGravityOptionsT = {}) {
         },
       });
     }
-  }, [mode, intensity, prefersReducedMotion, disabled]);
+  }, [mode, intensity, reduceMotion, disabled]);
 
   return ref;
 }

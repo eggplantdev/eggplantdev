@@ -5,6 +5,7 @@ import SplitType from "split-type";
 import { useRef } from "react";
 import useWindowSize from "@/hooks/use-window-size";
 import { usePreferencesStore } from "@/stores/preferences-store";
+import { useReduceMotion } from "@/hooks/use-reduce-motion";
 import { cn } from "@/helpers/cn";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -19,7 +20,10 @@ export const AnimatedLettersMask = ({ text = "", className }: { text?: string; c
   const lettersRef = useRef<HTMLDivElement>(null);
   const { clientWidth } = useWindowSize();
   const splitRef = useRef<SplitType | null>(null);
-  const isEnabled = usePreferencesStore((s) => s.letterAnimations);
+  const reduceMotion = useReduceMotion();
+  // The mask overlay turns yellow in contrast mode, so the reveal must stay off there.
+  const isContrast = usePreferencesStore((s) => s.theme === "contrast");
+  const isEnabled = !reduceMotion && !isContrast;
 
   useGSAP(
     () => {
