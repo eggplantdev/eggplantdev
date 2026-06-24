@@ -42,7 +42,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 
             <DevTestNav />
             <TopNavigation />
-            <main id="main-content z-201">{children}</main>
+            <main id="main-content" className="z-201 scroll-mt-32">
+              {children}
+            </main>
             <Footer />
           </DebugWrapper>
         </MotionProvider>
