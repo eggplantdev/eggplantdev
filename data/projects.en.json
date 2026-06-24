@@ -10,7 +10,7 @@
       "name": "Fest Forum",
       "category": "commercial",
       "url": "https://www.festforum.pl",
-      "description": "A digital collaboration platform for Poland's festival industry, built for Kraków Festival Office and the National Centre for Culture. The platform serves as a resource hub where festival organizers share best practices, access reports on copyright, sustainability, and crowdfunding, and participate in events remotely. I'm implementing fully WCAG-compliant views, a complex article builder with rich content editing, and working on integrating a custom backend. The project is ongoing.",
+      "description": "A bilingual digital platform for Poland's festival industry, built for the Kraków Festival Office and the National Centre for Culture. It pairs a public festival site with a gated membership community where organizers register, build profiles, and publish their own articles through a moderated submission flow. I architected the frontend against two backends at once — a headless WordPress (ACF + WPML) driving the editorial pages, and a custom API handling accounts, authentication, membership, and submissions. Core work includes a multi-step application builder, an event program with capacity-limited registration, edition-driven theming, and a fully WCAG-compliant UI with a dedicated high-contrast accessibility mode. The project is ongoing.",
       "logo": "/images/projects/alpha-logo.png",
       "tempSlug": "/projects/fest-forum",
       "sections": [
