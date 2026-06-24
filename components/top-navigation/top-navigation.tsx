@@ -85,7 +85,9 @@ export function TopNavigation() {
                     <div className="grit text-primary grid-cols-1 p-5">
                       <AccessibilityMenu className="uppercase" />
                       <RoundedSeparator className="my-4" />
-                      <p className="text-copy-body scalable pb-4 text-xs text-balance">{t.animationNotice}</p>
+                      <p className="text-hero-title-secondary scalable pb-4 text-xs text-balance">
+                        {t.animationNotice}
+                      </p>
                       <AnimationToggles className="uppercase" />
                     </div>
                   </div>

@@ -33,7 +33,7 @@ export function MobileMenu({ isOpen, setIsOpen }: MobileMenuPropsT) {
 
               <AccessibilityMenu className="uppercase" />
               <RoundedSeparator className="my-6" />
-              <p className="text-16 text-copy-body scalable pb-6 text-balance">{t.animationNotice}</p>
+              <p className="text-16 text-hero-title-secondary scalable pb-6 text-balance">{t.animationNotice}</p>
               <AnimationToggles className="uppercase" />
               <RoundedSeparator className="my-6" />
             </div>
