@@ -10,7 +10,7 @@ import { SkipToContent } from "@/components/accessibility/skip-to-content";
 import { PreferencesHydrator } from "@/components/general/preferences-hydrator";
 import { MotionProvider } from "@/components/general/motion-provider";
 import { Footer } from "../components/footer/footer";
-import { Analytics } from "@vercel/analytics/react";
+import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { DevTestNav } from "@/components/test/dev-test-nav";
 import { FixedTravelingDots } from "@/components/animations/fixed-traveling-dots/fixed-traveling-dots";
