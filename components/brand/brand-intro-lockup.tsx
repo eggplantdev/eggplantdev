@@ -2,7 +2,7 @@
 
 import { cn } from "@/helpers/cn";
 
-import { SCATTER_MS, WORDMARK } from "./brand-intro-config";
+import { WORDMARK, WORDMARK_DELAY_MS } from "./brand-intro-config";
 import { AnimatedBrandLogo } from "./animated-brand-logo";
 import { IntroWordmark } from "./intro-wordmark";
 
@@ -15,7 +15,7 @@ export function BrandIntroLockup({ className }: { className?: string }) {
   return (
     <div className={cn("flex flex-col items-center text-center", className)}>
       <AnimatedBrandLogo className={FULL_LOGO_CLASS} />
-      <IntroWordmark text={WORDMARK} delay={SCATTER_MS / 1000} className="mt-3" />
+      <IntroWordmark text={WORDMARK} delay={WORDMARK_DELAY_MS / 1000} className="mt-3" />
     </div>
   );
 }

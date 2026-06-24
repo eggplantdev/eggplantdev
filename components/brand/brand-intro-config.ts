@@ -9,10 +9,14 @@ export const WORDMARK = "Websites and apps\nfor taste seekers";
 // cascades in letter-by-letter, THEN a beat before the nav (logo + chrome) fades in. Each stage is its
 // own number so the nav-reveal timing can't drift from what the lockup actually animates.
 export const SCATTER_MS = 3000; // dots fly in and settle (≈ slowest dot's staggered spring)
-const REVEAL_PAUSE_MS = 1800; // beat after the tagline finishes, before the nav appears
+
+// The tagline cascade overlaps the scatter tail instead of waiting for it to fully finish — the last
+// dots are still settling as the first letters fade in. Starting at 60% of the scatter removes ~1.2s
+// of dead air before the largest letter paints (mobile LCP was gated on the full 3s hold).
+export const WORDMARK_DELAY_MS = SCATTER_MS * 0.6;
 
 // The moment the hero intro is "done" — when the nav fades in (see brand-intro-store).
-export const INTRO_DONE_MS = SCATTER_MS + wordmarkDurationMs(WORDMARK) + REVEAL_PAUSE_MS;
+export const INTRO_DONE_MS = WORDMARK_DELAY_MS + wordmarkDurationMs(WORDMARK);
 
 // One key for the whole tab session — sessionStorage clears on tab close, so a fresh tab/incognito
 // reveals the nav on the full timeline again.
