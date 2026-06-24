@@ -26,7 +26,7 @@ export default function HomePage() {
           <BrandIntroLockup />
         </section>
 
-        <section className="fest-container fest-grid items-start gap-y-1 md:gap-y-16">
+        <section className="fest-container fest-grid items-start gap-y-8 md:gap-y-16">
           <AnimatedLettersMask
             text={introTxt}
             className="640:col-span-8 col-span-full min-w-0 md:col-span-10 xl:col-span-14"
