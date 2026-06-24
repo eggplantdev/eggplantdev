@@ -22,7 +22,6 @@
   --color-gray5: #555;
   --color-gray7: #777;
   --color-green: #10ffaa;
-  --color-green-toggle: #1db954;
   --color-lightgray: #ccc;
   --color-red: #ff7575;
   --color-white: #fff;
@@ -131,6 +130,13 @@
   --48: clamp(3rem, calc(48 / 360 * 100vw), 4rem);
   --64: clamp(4rem, calc(64 / 768 * 100vw), 5rem);
   --80: clamp(5rem, calc(80 / 1024 * 100vw), 6rem);
+}
+
+/* Reserve the scrollbar gutter so locking scroll (overflow:hidden when the
+   mobile menu opens) never shifts the page sideways — fixes the content jump
+   on menu open/close. */
+html {
+  scrollbar-gutter: stable;
 }
 
 body {

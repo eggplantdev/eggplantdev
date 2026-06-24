@@ -30,6 +30,8 @@ export function TopNavigation() {
     const willOpen = !isOpen;
     setIsOpen(willOpen);
     if (!isDesktop) {
+      // Scroll-lock the page behind the drawer. The scrollbar gutter is reserved
+      // globally (scrollbar-gutter: stable) so hiding it never shifts layout.
       document.documentElement.style.overflow = willOpen ? "hidden" : "";
     }
   };
