@@ -165,9 +165,10 @@
             "PostgreSQL",
             "Vercel AI SDK",
             "OpenRouter",
-            "FSRS",
             "Tailwind",
-            "shadcn/ui"
+            "shadcn/ui",
+            "Vitest",
+            "Playwright"
           ]
         }
       ]
@@ -194,7 +195,9 @@
             "Zod",
             "GSAP",
             "Framer Motion",
-            "Tailwind"
+            "Tailwind",
+            "Vitest",
+            "Playwright"
           ]
         }
       ]
@@ -223,7 +226,9 @@
             "Zustand",
             "react-datasheet-grid",
             "Tailwind",
-            "shadcn/ui"
+            "shadcn/ui",
+            "Vitest",
+            "Playwright"
           ]
         }
       ]
