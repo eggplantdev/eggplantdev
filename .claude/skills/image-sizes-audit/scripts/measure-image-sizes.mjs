@@ -16,7 +16,7 @@
 
 import { chromium } from "@playwright/test";
 
-// Project breakpoints (styles/globals.css --breakpoint-*). Used as min-width
+// Project breakpoints (styles/globals.css --breakpoint-*). Used as max-width
 // anchors AND to build the sweep. A custom set can override via --viewports.
 const BREAKPOINTS = [360, 450, 640, 768, 1024, 1280, 1440, 1920, 2120];
 // Sample above the largest breakpoint so a container max-width clamp is caught
@@ -103,9 +103,10 @@ const COLLECT = () =>
       return { key, sizes: img.getAttribute("sizes") || "", width: Math.round(r.width) };
     });
 
-// Given viewport->width samples, derive a `sizes` string using min-width anchors
-// descending. Per band decide vw (width scales with viewport) vs px (width is
-// clamped constant). Then collapse equal adjacent bands for a readable string.
+// Given viewport->width samples, derive a `sizes` string using max-width anchors
+// ascending (bare default = widest case). Per band decide vw (width scales with
+// viewport) vs px (width is clamped constant). Then collapse equal adjacent bands
+// for a readable string.
 function deriveSizes(samples, sweep, vwTol, pxTol) {
   const anchors = BREAKPOINTS.filter((b) => b > BREAKPOINTS[0]); // smallest is the mobile base
   const maxViewport = sweep[sweep.length - 1];
@@ -134,12 +135,16 @@ function deriveSizes(samples, sweep, vwTol, pxTol) {
   // Merge near-equal adjacent bands (also collapses exact dupes) for a readable
   // string that still never under-serves.
   const collapsed = mergeBands(bands, vwTol, pxTol);
-  // Emit min-width segments descending; the base band drops its min-width.
+  // Emit max-width segments ascending; the largest band — the one no max-width
+  // condition covers — drops its condition and becomes the bare default. This is
+  // the Next.js docs convention: the bare value is the widest (desktop) case, and
+  // each band's threshold is its upper edge (the next band's start).
   const segs = [];
-  for (let i = collapsed.length - 1; i >= 0; i--) {
+  for (let i = 0; i < collapsed.length; i++) {
     const b = collapsed[i];
-    if (b.start === BREAKPOINTS[0]) segs.push(b.value);
-    else segs.push(`(min-width: ${b.start}px) ${b.value}`);
+    const next = collapsed[i + 1];
+    if (!next) segs.push(b.value);
+    else segs.push(`(max-width: ${next.start}px) ${b.value}`);
   }
   return segs.join(", ");
 }

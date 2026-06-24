@@ -85,9 +85,13 @@ ancestor `max-width` cap, observed, not assumed. Adjacent near-equal bands are
 then **merged up** (keep the larger value, never under-serve) so the string stays
 readable instead of emitting a segment per breakpoint. Tune with `--vw-tol`
 (default 10vw) and `--px-tol` (default 0.1 = 10%); pass `--vw-tol 0 --px-tol 0`
-for the exact, unmerged form. Output follows the project convention: `min-width`
-anchors, mobile value last — e.g. a real home-page portrait reduces to
-`(min-width: 1440px) 747px, (min-width: 640px) 57vw, 71vw`.
+for the exact, unmerged form. Output follows the project convention: `max-width`
+anchors ascending, with the bare (unconditioned) value being the widest/desktop
+case — the width no `max-width` condition covers. This mirrors the Next.js docs
+example (`sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"`): each
+threshold is the band's upper edge, and the last value is the largest viewport. A
+real home-page portrait reduces to
+`(max-width: 640px) 71vw, (max-width: 1440px) 57vw, 747px`.
 
 ### 4. Apply fixes
 
@@ -96,9 +100,9 @@ For each image where `matches` is false, write the recommended `sizes`:
 - Direct `<Image>` — edit the `sizes` attribute.
 - Wrapper call site — edit the `sizes` prop passed to the wrapper.
 
-Keep the project's `min-width`, mobile-last ordering. Don't reformat unrelated
-attributes. If the recommended string is only trivially different (≤2px / ≤1vw
-rounding), leave it — churn isn't worth it.
+Keep the project's `max-width` ascending, desktop-last (bare) ordering. Don't
+reformat unrelated attributes. If the recommended string is only trivially
+different (≤2px / ≤1vw rounding), leave it — churn isn't worth it.
 
 ### 5. Verify
 
