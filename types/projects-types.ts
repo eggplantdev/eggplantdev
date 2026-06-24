@@ -4,6 +4,7 @@ export type ProjectT = {
   name: string;
   description: string;
   category?: string;
+  domains?: string[];
   url?: string;
   logo: string;
   tempSlug: string;

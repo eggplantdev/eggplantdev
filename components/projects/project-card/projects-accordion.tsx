@@ -35,7 +35,7 @@ type ProjectAccordionItemPropsT = {
 };
 
 function ProjectAccordionItem({ project, isOpen }: ProjectAccordionItemPropsT) {
-  const { name, description, sections, url } = project;
+  const { name, description, sections, url, domains } = project;
 
   const mainSection = sections?.find((s) => s.type === "main");
   const year = mainSection && "cats" in mainSection ? mainSection.cats.Year : undefined;
@@ -48,6 +48,7 @@ function ProjectAccordionItem({ project, isOpen }: ProjectAccordionItemPropsT) {
       <AccordionTrigger
         name={name}
         year={year}
+        domains={domains}
         isOpen={isOpen}
         hasUrl={!!url}
         nameFontClass={getProjectNameFont(project.slug)}
