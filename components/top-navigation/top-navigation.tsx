@@ -78,8 +78,7 @@ export function TopNavigation() {
                   }}
                   data-slot="nav-dropdown"
                   inert={!isOpen ? true : undefined}
-                  style={{ pointerEvents: isOpen ? "auto" : "none" }}
-                  className="p-[2px]"
+                  className={`p-[2px] ${isOpen ? "pointer-events-auto" : "pointer-events-none"}`}
                 >
                   <div className={`bg-bgc rounded-md`}>
                     <div className="grit text-primary grid-cols-1 p-5">
