@@ -53,7 +53,7 @@ export function ContentInner({ description, tags, url }: ContentInnerPropsT) {
 
   return (
     <div className="scalable grid gap-6 pr-10 pb-12">
-      <p className="text-16 text-hero-title-secondary text-balance">{description}</p>
+      <p className="text-16 text-hero-title-secondary text-balance whitespace-pre-wrap">{description}</p>
 
       {tags.length > 0 && (
         <div className="flex flex-wrap gap-2">

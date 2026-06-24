@@ -5,6 +5,7 @@
       "slug": "fest-forum",
       "name": "Fest Forum",
       "category": "commercial",
+      "domains": ["Platform", "Community"],
       "url": "https://www.festforum.pl",
       "description": "A bilingual digital platform for Poland's festival industry, built for the Kraków Festival Office and the National Centre for Culture. It pairs a public festival site with a gated membership community where organizers register, build profiles, and publish their own articles through a moderated submission flow. I architected the frontend against two backends at once — a headless WordPress driving the editorial pages, and a custom API handling accounts, authentication, membership, and submissions. Core work includes a multi-step application builder, an event program with capacity-limited registration, edition-driven theming, and a fully WCAG-compliant UI. The project is ongoing.",
       "sections": [
@@ -32,6 +33,7 @@
       "slug": "buildlog",
       "name": "BUILD/LOG",
       "category": "commercial",
+      "domains": ["SaaS"],
       "url": "https://buildlog.app",
       "description": "A construction site-management platform that pulls a job site's tasks, defects, and photo documentation into one workspace — replacing scattered emails, chat threads, and paper. Built as part of a team, I integrated a custom PHP backend with a React and React Query frontend, building the kanban-style task tracking, filterable tables, multi-step forms, and detailed item views that the role-specific dashboards — site managers, contractors, inspectors — all run on.",
       "sections": [
@@ -47,6 +49,7 @@
       "slug": "the-makery",
       "name": "The Makery",
       "category": "commercial",
+      "domains": ["Marketplace", "SaaS"],
       "url": "https://themakery.de",
       "description": "A multilingual admin dashboard and marketplace for an artisan workshop platform with hundreds of existing users. I was responsible for the transition from an aging, slow admin interface to a modern tech stack in Next.js — rebuilding data management views, user flows, and the core marketplace functionality while keeping the platform operational for its existing user base throughout the migration.",
       "sections": [
@@ -74,6 +77,7 @@
       "slug": "bht-startup-hub",
       "name": "BHT Startup Hub",
       "category": "commercial",
+      "domains": ["Website"],
       "url": "https://www.bht-berlin.de",
       "description": "The website for Berlin University of Technology's startup incubator — a lean accelerator that has supported founders with coaching, coworking space, and equity-free scholarships. I built the custom frontend integrated with a WordPress backend.",
       "sections": [
@@ -89,6 +93,7 @@
       "slug": "navarra-lab",
       "name": "Navarra Lab",
       "category": "commercial",
+      "domains": ["Website"],
       "url": "https://navarra-lab.com/projects",
       "description": "The company portfolio website for Navarra Lab — the design studio and software house where I work. This site is also the foundation that my personal portfolio is built on.",
       "sections": [
@@ -104,6 +109,7 @@
       "slug": "ultramaryna",
       "name": "Ultramaryna",
       "category": "commercial",
+      "domains": ["Platform", "Editorial"],
       "url": "https://ultramaryna.pl",
       "description": "A cultural events discovery platform, operating as a free guide to the Silesia region's cultural life. The platform lets users browse events across theater, music, visual arts, and film. I built the frontend for the digital platform, including the event browsing experience, newsletter integration, and the magazine content section.",
       "sections": [
@@ -119,6 +125,7 @@
       "slug": "murat-yumak",
       "name": "Murat Yumak",
       "category": "commercial",
+      "domains": ["E-commerce"],
       "url": "https://www.muratyumak.com",
       "description": "A bilingual e-commerce platform for a Berlin-based curator of vintage streetwear classics from the 80s to the present. The site operates like a museum meets boutique — each item comes with cultural context and provenance, and objects remain viewable even after being sold. I built the bilingual Shopify-integrated frontend with advanced filtering, along with the archival browsing experience that sets the shop apart from typical resale platforms.",
       "sections": [
@@ -134,8 +141,9 @@
       "slug": "eggplant-notes",
       "name": "Eggplant Notes",
       "category": "freelance",
+      "domains": ["SaaS", "AI"],
       "url": "https://eggplant-notes.vercel.app",
-      "description": "AI-powered spaced-repetition learning app I designed and shipped solo — by orchestrating Claude and coding agents end-to-end, frontend to database, in a fraction of the usual time. Notes are organized into subjects and rendered with syntax-highlighted code, then turned into recall cards scheduled by the FSRS algorithm — each card links back to its source note so context is never lost. Users connect their own OpenRouter key to generate notes and cards with AI, and a token-authenticated HTTP API lets CLI tools and coding agents read and write content directly — the app is both built with AI and built for it. Installable as a PWA, with strict per-user data isolation enforced by Postgres row-level security.",
+      "description": "Built as part of the 10xDevs program — an exploration of AI-native software engineering across the full development workflow: research, planning, implementation, and production maintenance.\nThe result is a feature-rich spaced-repetition learning app for developers, built from scratch with AI in just a few weeks. Notes are grouped into subjects and rendered with syntax-highlighted code, then turned into recall cards scheduled by the FSRS algorithm. Users connect their own OpenRouter key to generate notes and cards with AI (including from pasted text and PDFs), and a token-authenticated HTTP API lets CLI tools and coding agents talk to the app directly. Installable as a PWA, with strict per-user data isolation enforced by Postgres row-level security.",
       "sections": [
         { "type": "main", "cats": { "Year": "2026" } },
         {
@@ -160,6 +168,7 @@
       "slug": "chaos-kitchen",
       "name": "Chaos Kitchen",
       "category": "freelance",
+      "domains": ["E-commerce", "Brand"],
       "url": "https://www.chaoskitchen.pl",
       "description": "A high-end personal-brand site and e-commerce, built solo end-to-end. The single-page scrolling experience extends her Instagram presence — showcasing private dinners, premium catering, retreat cooking, and fermentation workshops — and is paired with a full ebook store: cart, Przelewy24 payments, digital fulfilment, and gated download links delivered by email. Everything here is mine — the design concept and visual identity for the site, the cart and store flow, and the full stack, from the Payload CMS backend and Postgres data layer to the animated GSAP frontend.",
       "sections": [
@@ -184,6 +193,7 @@
       "slug": "wykonczymy",
       "name": "Wykonczymy",
       "category": "freelance",
+      "domains": ["SaaS"],
       "url": "https://wykonczymy.vercel.app/",
       "description": "A full operations platform for a construction and renovation company. What began as basic money-flow tracking has grown into an integrated business system: multi-register cash management on a dual-ledger model (real cash flow vs. per-investment P&L — margins, balances, labor and material costs), project management with role-based access for the whole team, and an in-app cost-estimate editor with sections, work stages, a shared work catalogue, and live totals that is replacing the company's old Google Sheets workflow — with Sheets/Drive sync bridging the migration. I build and own it end-to-end on Next.js and Payload CMS, including the financial calculation engine and email automation.",
       "sections": [
@@ -209,6 +219,7 @@
       "slug": "moodbox",
       "name": "Moodbox",
       "category": "freelance",
+      "domains": ["E-commerce", "Platform"],
       "url": "https://www.moodbox.pl",
       "description": "A material-sampling platform for interior designers — they browse curated collections of tiles, textiles, wood flooring, and mosaics from partner brands, order samples, and receive them in organized boxes. I built the platform end-to-end: a Shopify-integrated storefront wired to a custom Payload CMS backend on Postgres. The core of it is a post-purchase feedback loop — HMAC-verified Shopify order webhooks feed a scheduled-email queue that, seven days after a box ships, emails each customer a tokenized link to a multi-step brand survey. The survey gathers per-brand ratings and reasons through conditional, cross-validated steps with autosave, commits atomically as a database transaction, then issues a one-off Shopify discount code in return. Partner content, every survey question, and all email templates are editable in the CMS, and lead and response data export to CSV — giving brands a direct read on how their materials land with specifiers.",
       "sections": [
@@ -235,6 +246,7 @@
       "slug": "olej-to",
       "name": "Olej.to",
       "category": "freelance",
+      "domains": ["Blog"],
       "url": "https://www.olejtopisze.pl",
       "description": "A lifestyle blog platform about the struggles and joys of simple life — blending humor, travel stories and personal reflection. I implemented a WordPress backend for content management paired with a custom Svelte frontend, delivering a clean, minimal reading experience that prioritizes typography and quick scanning across categories like humor, serious essays, and personal stories. My first solo work.",
       "sections": [
