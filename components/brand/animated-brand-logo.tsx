@@ -12,7 +12,8 @@ import { motion } from "framer-motion";
 import { cn } from "@/helpers/cn";
 import { useReduceMotion } from "@/hooks/use-reduce-motion";
 
-import { buildBrandDots, DOT_R, rand, scatter, VIEWBOX } from "./brand-mark-dots";
+import { buildBrandDots, DOT_R, VIEWBOX } from "./brand-mark-dots";
+import { rand, scatter } from "./brand-mark-scatter";
 
 const GLOW = 0.9; // 0..1 bloom intensity
 const REST_BLUR = GLOW * DOT_R * 1.8; // resting glow blur
