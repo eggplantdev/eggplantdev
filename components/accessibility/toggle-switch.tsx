@@ -26,9 +26,9 @@ export function ToggleSwitch({ checked, onChange, label, disabled }: ToggleSwitc
     >
       <div
         className={cn(
-          "h-7 w-7 rounded-full shadow-sm transition-[transform,background-color] duration-300 ease-out md:h-5 md:w-5",
-          // The moving circle carries the gold accent when on; white when off.
-          checked ? "bg-gold-cream translate-x-6 md:translate-x-4" : "translate-x-0 bg-white",
+          "h-7 w-7 rounded-full bg-white shadow-sm transition-[transform,background-color] duration-300 ease-out md:h-5 md:w-5",
+          // Knob stays white in both states; on/off is signalled by track color + position.
+          checked ? "translate-x-6 md:translate-x-4" : "translate-x-0",
         )}
       />
     </button>
