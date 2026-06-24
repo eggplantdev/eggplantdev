@@ -38,14 +38,10 @@ export function TopNavigation() {
 
   return (
     <>
-      {/* Logo — eggplant brand mark; fades in with the rest of the nav once the hero intro is done.
-          Only the wordmark inverts (mix-blend-difference lives on the text in EggplantLogo); the
-          colored dot mark keeps its true colors. */}
-      <div className="pointer-events-none fixed top-0 right-0 left-0 z-99999">
-        <div className="fest-container flex w-full items-start">
-          <EggplantLogo />
-        </div>
-      </div>
+      {/* Logo — eggplant brand mark; revealed with the rest of the nav once the hero intro is done.
+          Renders its own fixed layers: a non-blended dot mark (keeps true colors) and a separate
+          mix-blend-difference wordmark layer so the wordmark inverts against the page (see EggplantLogo). */}
+      <EggplantLogo />
 
       {/* Hamburger — own layer with mix-blend-difference so it auto-inverts on any background */}
       <div
