@@ -297,6 +297,13 @@ body {
   }
 }
 
+/* Keyboard focus ring — override the browser's default blue with the gold accent.
+   :focus-visible only fires for keyboard nav, so mouse clicks stay ringless. */
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
 /* Form reset */
 input,
 textarea {
