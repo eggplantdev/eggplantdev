@@ -16,7 +16,7 @@ Read this prompt before working on any hero concepts, section variants, or visua
 
 Page sections use two composable utilities defined in `styles/globals.css` (not Tailwind defaults):
 
-- `fest-container` — centers content, caps width at `--max-w-xxl` (1920px), adds responsive side padding.
+- `fest-container` — centers content, caps width at `--max-w-page` (1440px), adds responsive side padding. Content never grows past 1440, so full-bleed images cap there too (relevant for `next/image` `sizes`).
 - `fest-grid` — the column grid: **4 cols → 8 (`640:`) → 12 (`md:`) → 16 (`xl:`/1440)**. Place children with `col-span-*` (e.g. `col-span-full`, `md:col-span-6`). See `ProjectsSection` for the canonical pattern.
 
 Gotchas:
