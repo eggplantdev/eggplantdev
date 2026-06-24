@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { AnimatedBrandLogo } from "@/components/brand/animated-brand-logo";
 import { useIntroDone } from "@/components/brand/brand-intro-store";
 import { cn } from "@/helpers/cn";
@@ -16,19 +15,25 @@ export function EggplantLogo({ className, link = true }: { className?: string; l
   // Returning / reduced-motion visitors get it immediately (the store decides — see useIntroDone).
   const introDone = useIntroDone();
 
+  // Masked reveal (mirrors AnimatedLettersMask), chosen for LCP: the lockup is painted at full
+  // opacity from first render, so the wordmark is the page's LCP element at ~FCP instead of at
+  // intro-done (~9s). A background-coloured overlay hides it during the hero intro, then fades
+  // away — the text is never *revealed* early, but LCP records its paint time, not the overlay lift.
+  // (Fading the lockup's own opacity instead would drop it from LCP until the reveal — the bug we left.)
   const content = (
-    <motion.span
-      aria-hidden={!introDone}
-      className="flex items-center gap-2"
-      initial={false}
-      animate={{ opacity: introDone ? 1 : 0 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-    >
+    <span aria-hidden={!introDone} className="relative flex items-center gap-2">
       {logo}
       <span className="text-primary font-mono text-sm font-semibold tracking-tight whitespace-nowrap mix-blend-difference sm:text-base lg:text-lg">
         eggplant_dev
       </span>
-    </motion.span>
+      <span
+        aria-hidden
+        className={cn(
+          "bg-bgc pointer-events-none absolute -inset-1 transition-opacity duration-500 ease-out",
+          introDone ? "opacity-0" : "opacity-100",
+        )}
+      />
+    </span>
   );
 
   if (!link) return content;
