@@ -20,7 +20,7 @@ export const SimpleSection = ({ id, titleLine, text, paragraphs, buttons, classN
   const resolvedParagraphs = paragraphs?.length ? paragraphs : text ? [text] : [];
 
   return (
-    <section id={id} className={cn("fest-grid scroll-mt-32", className)}>
+    <section id={id} className={cn("fest-grid", className)}>
       <div className={cn("col-span-full", aside ? "640:col-span-7 1280:col-span-8" : "640:col-span-7")}>
         {titleLine && <SimpleHeader title={titleLine} />}
 

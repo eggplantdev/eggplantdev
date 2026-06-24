@@ -22,10 +22,9 @@ export default function HomePage() {
   return (
     <div className="bg-bgc text-primary">
       <GradientMask />
-      <div className="mx-auto grid w-full max-w-[1440px] grid-cols-1 pt-32">
-        {/* Centered hero — the brand mark scatters into place + tagline cascades. Fill the viewport and
-            cancel the grid's top padding so the mark sits dead center. */}
-        <section ref={heroRef} className="-mt-32 flex min-h-svh items-center justify-center">
+      <div className="mx-auto grid w-full max-w-[1440px] grid-cols-1">
+        {/* Centered hero — the brand mark scatters into place + tagline cascades; fills the viewport. */}
+        <section ref={heroRef} className="flex min-h-svh items-center justify-center">
           <BrandIntroLockup />
         </section>
 
@@ -44,9 +43,9 @@ export default function HomePage() {
             />
           </div>
         </section>
-        <ProjectsSection data={commercialWork} className="fest-container mt-32 md:mt-48" />
 
-        <ProjectsSection data={freelanceWork} className="fest-container mt-32 md:mt-48" />
+        <ProjectsSection data={freelanceWork} />
+        <ProjectsSection data={commercialWork} />
 
         <GlamBillboard />
 
