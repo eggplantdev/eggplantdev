@@ -1,16 +1,18 @@
 "use client";
 
 import { useReduceMotion } from "@/hooks/use-reduce-motion";
-import { ORBIT_DURATION_S, ID } from "./config";
 
-export function GlamCosmicBillboardOrbitDot({
+// A single dot orbiting a ring via SMIL motion. Shared animation infrastructure (like TravelingDots) —
+// the glam-billboard section and the glam-cosmic-billboard hero both render these over their own
+// configs, passing the gradient id and timing that suit each.
+export function OrbitDot({
   path,
-  gradientId = ID.orbitDot,
-  durationS = ORBIT_DURATION_S,
+  gradientId,
+  durationS = 44,
   delay = 0,
 }: {
   path: string;
-  gradientId?: string;
+  gradientId: string;
   durationS?: number;
   delay?: number;
 }) {

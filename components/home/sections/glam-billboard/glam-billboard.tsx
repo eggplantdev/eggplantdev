@@ -1,10 +1,9 @@
 "use client";
 
 import { TravelingDots } from "@/components/animations/fixed-traveling-dots/traveling-dots";
+import { OrbitDot } from "@/components/animations/orbit-dot/orbit-dot";
+import { OrbitDotDefs } from "@/components/animations/orbit-dot/orbit-dot-defs";
 import { EggplantImage } from "@/components/general/eggplant-image";
-
-import { GlamBillboardOrbitDot } from "./glam-billboard-orbit-dot";
-import { GlamBillboardSvgDefs } from "./glam-billboard-svg-defs";
 import {
   BILLBOARD_DOT_PATHS,
   GLAM_STRIPES,
@@ -32,7 +31,7 @@ export function GlamBillboard() {
           viewBox="0 0 1200 800"
           preserveAspectRatio="xMidYMid meet"
         >
-          <GlamBillboardSvgDefs />
+          <OrbitDotDefs goldId={ID.orbitDot} pinkId={ID.orbitDotPink} />
 
           {/* Diagonal glam stripes — extended past the viewBox so they span the full section width */}
           {GLAM_STRIPES.map((stripe, i) => (
@@ -66,8 +65,8 @@ export function GlamBillboard() {
 
           <TravelingDots gradients={[]} paths={BILLBOARD_DOT_PATHS} />
 
-          <GlamBillboardOrbitDot path={ORBIT_PATH} />
-          <GlamBillboardOrbitDot path={ORBIT_PATH_PINK} gradientId={ID.orbitDotPink} durationS={38} delay={12} />
+          <OrbitDot path={ORBIT_PATH} gradientId={ID.orbitDot} />
+          <OrbitDot path={ORBIT_PATH_PINK} gradientId={ID.orbitDotPink} durationS={38} delay={12} />
         </svg>
 
         {/* Subtitle (left) + floating eggplant (right). min-h keeps the section tall so the rings read big. */}

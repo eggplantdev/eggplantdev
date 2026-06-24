@@ -2,9 +2,9 @@
 
 import { ORBIT_PATH, ORBIT_PATH_PINK, ORBITAL_ARCS, GLAM_STRIPES, BILLBOARD_DOT_PATHS, ID } from "./config";
 import { TravelingDots } from "@/components/animations/fixed-traveling-dots/traveling-dots";
+import { OrbitDot } from "@/components/animations/orbit-dot/orbit-dot";
+import { OrbitDotDefs } from "@/components/animations/orbit-dot/orbit-dot-defs";
 import { GlamCosmicBillboardNebulaWash } from "./glam-cosmic-billboard-nebula-wash";
-import { GlamCosmicBillboardSvgDefs } from "./glam-cosmic-billboard-svg-defs";
-import { GlamCosmicBillboardOrbitDot } from "./glam-cosmic-billboard-orbit-dot";
 import { GlamCosmicBillboardHeroContent } from "./glam-cosmic-billboard-hero-content";
 import HeroSectionWrapper from "../../../animations/hero-section-wrapper/hero-section-wrapper";
 
@@ -19,7 +19,7 @@ export function GlamCosmicBillboard() {
         viewBox="0 0 1200 800"
         preserveAspectRatio="xMidYMid meet"
       >
-        <GlamCosmicBillboardSvgDefs />
+        <OrbitDotDefs goldId={ID.orbitDot} pinkId={ID.orbitDotPink} />
 
         {/* Diagonal glam stripes */}
         {GLAM_STRIPES.map((stripe, i) => (
@@ -55,9 +55,9 @@ export function GlamCosmicBillboard() {
         <TravelingDots gradients={[]} paths={BILLBOARD_DOT_PATHS} />
 
         {/* Orbiting dot — gold arc */}
-        <GlamCosmicBillboardOrbitDot path={ORBIT_PATH} />
+        <OrbitDot path={ORBIT_PATH} gradientId={ID.orbitDot} />
         {/* Orbiting dot — pink arc */}
-        <GlamCosmicBillboardOrbitDot path={ORBIT_PATH_PINK} gradientId={ID.orbitDotPink} durationS={38} delay={12} />
+        <OrbitDot path={ORBIT_PATH_PINK} gradientId={ID.orbitDotPink} durationS={38} delay={12} />
       </svg>
 
       {/* Title, subtitle, description, CTA buttons, and floating eggplant image */}

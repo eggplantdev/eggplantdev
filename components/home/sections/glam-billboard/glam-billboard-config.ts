@@ -5,6 +5,7 @@
    without touching the test-page hero. Free to edit. */
 
 import type { DotPathT } from "@/components/animations/fixed-traveling-dots/traveling-dots";
+import { buildEllipseMotionPath } from "@/components/animations/orbit-dot/ellipse-motion-path";
 
 /* The svg uses preserveAspectRatio="meet", which letterboxes the 1200-wide viewBox to the center of
    this short, wide section. To make the stripes (and the dots riding them) span the FULL width, we draw
@@ -61,8 +62,6 @@ export const ORBITAL_ARCS = [
   { cx: 800, cy: 400, rx: 280, ry: 320, stroke: "var(--color-hot-pink)", strokeWidth: 1, opacity: 0.24, rotate: 10 },
 ] as const;
 
-export const ORBIT_DURATION_S = 44;
-
 /* ── SVG IDs — distinct from the shared hero's so both can coexist on one page ── */
 export const ID = {
   orbitDot: "glam-billboard-orbit-dot",
@@ -70,15 +69,5 @@ export const ID = {
 } as const;
 
 /* ── Derived motion paths for the orbiting dots ── */
-function buildEllipseMotionPath(arc: (typeof ORBITAL_ARCS)[number]) {
-  const rad = (arc.rotate * Math.PI) / 180;
-  const cos = Math.cos(rad);
-  const sin = Math.sin(rad);
-  const lx = -arc.rx;
-  const sx = arc.cx + lx * cos;
-  const sy = arc.cy + lx * sin;
-  return `M ${sx} ${sy} A ${arc.rx} ${arc.ry} ${arc.rotate} 1 1 ${arc.cx + arc.rx * cos} ${arc.cy + arc.rx * sin} A ${arc.rx} ${arc.ry} ${arc.rotate} 1 1 ${sx} ${sy} Z`;
-}
-
 export const ORBIT_PATH = buildEllipseMotionPath(ORBITAL_ARCS[0]);
 export const ORBIT_PATH_PINK = buildEllipseMotionPath(ORBITAL_ARCS[1]);

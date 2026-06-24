@@ -3,6 +3,7 @@
    ═══════════════════════════════════════════════ */
 
 import type { DotPathT } from "@/components/animations/fixed-traveling-dots/traveling-dots";
+import { buildEllipseMotionPath } from "@/components/animations/orbit-dot/ellipse-motion-path";
 
 /* ── Billboard-specific visible stripes (rendered as <line> elements) ── */
 export const GLAM_STRIPES = [
@@ -29,25 +30,12 @@ export const ORBITAL_ARCS = [
   { cx: 800, cy: 400, rx: 280, ry: 320, stroke: "var(--color-hot-pink)", strokeWidth: 1, opacity: 0.14, rotate: 10 },
 ] as const;
 
-/* ── Animation timing ── */
-export const ORBIT_DURATION_S = 44;
-
 /* ── SVG IDs (billboard-specific, orbit dots only) ── */
 export const ID = {
   orbitDot: "gcb-orbit-dot",
   orbitDotPink: "gcb-orbit-dot-pink",
 } as const;
 
-/* ── Derived constants ── */
-function buildEllipseMotionPath(arc: (typeof ORBITAL_ARCS)[number]) {
-  const rad = (arc.rotate * Math.PI) / 180;
-  const cos = Math.cos(rad);
-  const sin = Math.sin(rad);
-  const lx = -arc.rx;
-  const sx = arc.cx + lx * cos;
-  const sy = arc.cy + lx * sin;
-  return `M ${sx} ${sy} A ${arc.rx} ${arc.ry} ${arc.rotate} 1 1 ${arc.cx + arc.rx * cos} ${arc.cy + arc.rx * sin} A ${arc.rx} ${arc.ry} ${arc.rotate} 1 1 ${sx} ${sy} Z`;
-}
-
+/* ── Derived motion paths for the orbiting dots ── */
 export const ORBIT_PATH = buildEllipseMotionPath(ORBITAL_ARCS[0]);
 export const ORBIT_PATH_PINK = buildEllipseMotionPath(ORBITAL_ARCS[1]);
