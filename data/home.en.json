@@ -17,46 +17,6 @@
       "titleLine": ["Freelance", "Work"],
       "text": "Projects I own end-to-end — from initial scope and architecture through to deployment and handoff.",
       "filterCategory": "freelance"
-    },
-    {
-      "type": "fullSection",
-      "id": "about",
-      "titleLine": ["About", "Me"],
-      "cards": [
-        {
-          "title": "Background",
-          "content": "Before writing my first line of production code, I spent four years as Venue Manager at Forum Przestrzenie Kraków — a landmark cultural space with bars, restaurants, a concert hall, and a rotating cast of festivals. Managing ~100 people, handling budgets, vendor negotiations, and event logistics built the same skills I use every day as a developer: leading under pressure, communicating across disciplines, and making decisions with incomplete information."
-        },
-        {
-          "title": "Now",
-          "content": "I transitioned into web development in 2021, working at Navarra Lab across projects for cultural institutions, startups, and e-commerce brands in Berlin and Kraków. In 2024  when I felt confident enough I also started taking on freelance work, delivering full-stack applications from scope to production. I gravitate toward complex interfaces, accessibility challenges, and modernizing legacy systems. I'm currently exploring AI technologies and building applications with integrated LLM agents."
-        },
-        {
-          "title": "Off the Clock",
-          "content": "When I'm not coding, you'll find me behind the decks — DJing is how I stay connected to the music and events world I came from. For resetting, I chase wind and waves: kitesurfing and surfing are my way of switching off completely. Based between Kraków and Warsaw, bilingual in English and Polish."
-        }
-      ],
-      "largePhoto": "/images/home/portrait.jpg"
-    },
-    {
-      "type": "fullSection",
-      "id": "values",
-      "titleLine": ["What I", "Value"],
-      "cards": [
-        {
-          "title": "Accessibility",
-          "content": "Building for everyone isn't optional — it's the baseline. I implement WCAG-compliant interfaces because usability and inclusion are the same thing. Every project I touch gets proper semantic HTML, keyboard navigation, and screen reader support."
-        },
-        {
-          "title": "Ownership",
-          "content": "I don't wait for tickets. Whether I'm embedded in an agency team or running a freelance project solo, I take responsibility for the full delivery — from architecture decisions to the last pixel in production."
-        },
-        {
-          "title": "Pragmatism",
-          "content": "I pick tools that solve the problem, not tools that look impressive on a tech radar. Next.js, TypeScript, Tailwind, Payload, Shopify — whatever fits the constraint. No stack religion, no over-engineering."
-        }
-      ],
-      "largePhoto": "/images/home/approach.jpg"
     }
   ]
 }

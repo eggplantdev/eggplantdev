@@ -18,7 +18,7 @@ export const ProjectsSection = ({ data, className }: ProjectsSectionPropsT) => {
   const filtered = data.filterCategory ? projects.filter((p) => p.category === data.filterCategory) : projects;
 
   return (
-    <section id={data.id} className={cn("fest-grid scroll-mt-32", className)}>
+    <section id={data.id} className={cn("fest-grid fest-container mt-32 md:mt-48", className)}>
       <SimpleSection titleLine={data.titleLine} text={data.text} className="col-span-full" />
 
       <div className="640:col-span-7 col-span-full pt-20 md:col-span-8">

@@ -1,7 +1,6 @@
 "use client";
 
 import { ProjectsSection } from "@/components/home/sections/projects-section";
-import { FullSection } from "@/components/home/sections/full-section";
 import homeData from "@/data/home.en.json";
 import type { HomePagePropsT, ProjectsSectionT, FullSectionT } from "@/types/home-page-types";
 import { GradientMask } from "@/components/general/gradient-mask/gradient-mask";
@@ -17,7 +16,6 @@ export default function HomePage() {
 
   const commercialWork = sections[0] as ProjectsSectionT;
   const freelanceWork = sections[1] as ProjectsSectionT;
-  const about = sections[2] as FullSectionT;
 
   return (
     <div className="bg-bgc text-primary">
@@ -33,12 +31,12 @@ export default function HomePage() {
             text={introTxt}
             className="640:col-span-8 col-span-full min-w-0 md:col-span-10 xl:col-span-14"
           />
-          <div className="640:col-span-5 relative col-span-3 aspect-4/3 w-full overflow-hidden rounded-lg md:col-span-6 xl:col-span-9">
+          <div className="640:col-span-5 relative col-span-4 aspect-4/3 w-full overflow-hidden rounded-lg md:col-span-6 xl:col-span-9">
             <Image
               src="/images/ja_summer_bw.jpeg"
               alt="Black-and-white summer portrait"
               fill
-              sizes="(min-width: 1440px) 830px, (min-width: 768px) 58vw, (min-width: 640px) 75vw, 100vw"
+              sizes="(max-width: 640px) 100vw, (max-width: 1440px) 50vw, 664px"
               className="object-cover"
             />
           </div>
