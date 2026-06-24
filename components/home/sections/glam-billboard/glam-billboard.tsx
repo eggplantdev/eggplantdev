@@ -34,13 +34,13 @@ export function GlamBillboard() {
         >
           <GlamBillboardSvgDefs />
 
-          {/* Diagonal glam stripes */}
+          {/* Diagonal glam stripes — extended past the viewBox so they span the full section width */}
           {GLAM_STRIPES.map((stripe, i) => (
             <line
               key={`stripe-${i}`}
-              x1="0"
+              x1={stripe.x1}
               y1={stripe.y1}
-              x2="1200"
+              x2={stripe.x2}
               y2={stripe.y2}
               stroke={stripe.stroke}
               strokeWidth={stripe.strokeWidth}
@@ -72,7 +72,9 @@ export function GlamBillboard() {
 
         {/* Subtitle (left) + floating eggplant (right). min-h keeps the section tall so the rings read big. */}
         <div className="fest-container relative z-10">
-          <div className="relative z-10 mx-auto grid min-h-64 max-w-md grid-cols-[1fr_auto] items-center md:min-h-64 md:max-w-lg lg:min-h-72 lg:max-w-xl xl:min-h-80">
+          {/* min-h drives the section height; the meet-fit svg scales the rings/lines with it, so min-h and
+              max-w set the size of the whole composition. */}
+          <div className="relative z-10 mx-auto grid min-h-84 max-w-xl grid-cols-[1fr_auto] items-center md:max-w-2xl lg:min-h-92 lg:max-w-3xl xl:min-h-104">
             <div className="flex flex-col items-start">
               <p className="text-hot-pink/80 mb-6 w-full text-left font-mono text-xs tracking-[0.5em] whitespace-pre-line uppercase lg:text-sm">
                 {SUBTITLE}
@@ -80,7 +82,7 @@ export function GlamBillboard() {
             </div>
 
             <div className="relative z-10 flex w-full items-center justify-center">
-              <EggplantImage preset="glam-gold" glowPreset="gold" sizeClass="size-28 md:size-32 lg:size-36" priority />
+              <EggplantImage preset="glam-gold" glowPreset="gold" sizeClass="size-36 md:size-40 lg:size-48" priority />
             </div>
           </div>
         </div>

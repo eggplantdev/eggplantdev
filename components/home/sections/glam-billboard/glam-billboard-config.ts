@@ -6,21 +6,53 @@
 
 import type { DotPathT } from "@/components/animations/fixed-traveling-dots/traveling-dots";
 
-/* ── Diagonal glam stripes (rendered as <line> elements) ── */
+/* The svg uses preserveAspectRatio="meet", which letterboxes the 1200-wide viewBox to the center of
+   this short, wide section. To make the stripes (and the dots riding them) span the FULL width, we draw
+   them far past the viewBox on the x-axis; the svg's overflow-hidden clips them to the section box, so
+   they read edge-to-edge without bleeding into neighbouring sections. The page is capped at max-w-1440,
+   so [-1500, 2700] covers the widest case with margin.
+
+   Crucially the slope must stay GENTLE: the band is short, so a steep line exits through the top/bottom
+   edge before reaching the left/right edge (which is why the original 1:3 stripes stopped mid-screen).
+   With span ≈ 4200 viewBox units and a band height of 800, |slope| must be < ~0.19 to reach both side
+   edges; we use 0.08 so the lines stay well inside the band and clip at the sides. Only the lines are
+   reshaped — the rings keep their natural meet sizing. */
+const LINE_X_MIN = -1500;
+const LINE_X_MAX = 2700;
+const LINE_CENTER_X = 600;
+const LINE_SLOPE = -0.08; // negative = descends to the right, like the original stripes but far flatter
+const LINE_SPAN_SCALE = (LINE_X_MAX - LINE_X_MIN) / 1200; // = 3.5 — keeps dot travel speed constant
+
+/* A near-horizontal line pinned to centerY at the section's horizontal centre, spanning the full width. */
+function fullWidthLine(centerY: number) {
+  return {
+    x1: LINE_X_MIN,
+    y1: centerY + LINE_SLOPE * (LINE_X_MIN - LINE_CENTER_X),
+    x2: LINE_X_MAX,
+    y2: centerY + LINE_SLOPE * (LINE_X_MAX - LINE_CENTER_X),
+  };
+}
+
+const PINK_LINE = fullWidthLine(440);
+const GOLD_LINE = fullWidthLine(380);
+
+/* ── Diagonal glam stripes (rendered as <line> elements), extended to full width ── */
 export const GLAM_STRIPES = [
-  { y1: 620, y2: 220, stroke: "var(--color-hot-pink)", strokeWidth: 1, opacity: 0.16 },
-  { y1: 580, y2: 180, stroke: "var(--color-gold)", strokeWidth: 1, opacity: 0.16 },
+  { ...PINK_LINE, stroke: "var(--color-hot-pink)", strokeWidth: 1, opacity: 0.16 },
+  { ...GOLD_LINE, stroke: "var(--color-gold)", strokeWidth: 1, opacity: 0.16 },
 ] as const;
 
 /* ── Traveling dot paths (3 dots per stripe, staggered durations) ──
-   Gradients (td-grad-gold, td-grad-pink) are defined by FixedTravelingDots in layout.tsx. */
+   Gradients (td-grad-gold, td-grad-pink) are defined by FixedTravelingDots in layout.tsx.
+   Durations are scaled by LINE_SPAN_SCALE so the dots cross the longer (full-width) line at the
+   same on-screen speed as before. */
 export const BILLBOARD_DOT_PATHS: DotPathT[] = [
-  { x1: 0, y1: 620, x2: 1200, y2: 220, gradientId: "td-grad-pink", dur: 36 },
-  { x1: 0, y1: 620, x2: 1200, y2: 220, gradientId: "td-grad-pink", dur: 30 },
-  { x1: 0, y1: 620, x2: 1200, y2: 220, gradientId: "td-grad-pink", dur: 40 },
-  { x1: 0, y1: 580, x2: 1200, y2: 180, gradientId: "td-grad-gold", dur: 42 },
-  { x1: 0, y1: 580, x2: 1200, y2: 180, gradientId: "td-grad-gold", dur: 34 },
-  { x1: 0, y1: 580, x2: 1200, y2: 180, gradientId: "td-grad-gold", dur: 38 },
+  { ...PINK_LINE, gradientId: "td-grad-pink", dur: 36 * LINE_SPAN_SCALE },
+  { ...PINK_LINE, gradientId: "td-grad-pink", dur: 30 * LINE_SPAN_SCALE },
+  { ...PINK_LINE, gradientId: "td-grad-pink", dur: 40 * LINE_SPAN_SCALE },
+  { ...GOLD_LINE, gradientId: "td-grad-gold", dur: 42 * LINE_SPAN_SCALE },
+  { ...GOLD_LINE, gradientId: "td-grad-gold", dur: 34 * LINE_SPAN_SCALE },
+  { ...GOLD_LINE, gradientId: "td-grad-gold", dur: 38 * LINE_SPAN_SCALE },
 ];
 
 /* ── Orbital arcs (the rings) ── */
