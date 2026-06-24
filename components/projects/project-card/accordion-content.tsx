@@ -1,8 +1,27 @@
+import { Fragment } from "react";
 import * as Accordion from "@radix-ui/react-accordion";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { GlowWrapper } from "@/components/general/glow-wrapper";
 import strings from "@/data/ui-copy.json";
+
+// Render explicit `<br>` / `<br/>` markers from copy as a blank-line gap — a
+// double <br/> — so they read as a real paragraph break, distinct from a plain
+// `\n` newline (which `whitespace-pre-wrap` on the <p> already renders as a
+// single wrap). Double <br/> keeps the markup valid inside the <p>.
+function renderWithBreaks(text: string) {
+  return text.split(/<br\s*\/?>/i).map((chunk, i, all) => (
+    <Fragment key={i}>
+      {chunk}
+      {i < all.length - 1 && (
+        <>
+          <br />
+          <br />
+        </>
+      )}
+    </Fragment>
+  ));
+}
 
 type AccordionContentPropsT = {
   isOpen: boolean;
@@ -52,8 +71,10 @@ export function ContentInner({ description, tags, url }: ContentInnerPropsT) {
   const t = strings.projects;
 
   return (
-    <div className="scalable grid gap-6 pr-10 pb-12">
-      <p className="text-16 text-hero-title-secondary text-balance whitespace-pre-wrap">{description}</p>
+    <div className="scalable grid gap-6 pb-12">
+      <p className="text-16 text-hero-title-secondary text-justify whitespace-pre-wrap">
+        {renderWithBreaks(description)}
+      </p>
 
       {tags.length > 0 && (
         <div className="flex flex-wrap gap-2">
