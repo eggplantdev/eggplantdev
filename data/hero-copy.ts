@@ -7,10 +7,8 @@ export type HeroCopyKeyT =
   | "hexLatticeShrine"
   | "cosmicCultFlyer"
   | "cosmicFlower"
-  | "eggplantsInSpace"
   | "notFound"
   | "error"
-  | "celestialAstrolabe"
   | "cosmicCartography"
   | "gridOfLife";
 
@@ -63,13 +61,6 @@ export const HERO_COPY: HeroCopyMapT = {
     buttons: ["Make contact", "Back to top"],
   },
 
-  eggplantsInSpace: {
-    subtitle: "",
-    titleLine1: "EggPlants",
-    titleLine2: "in Space",
-    description: "Still out there. Still orbiting. Still somehow passing all the checks.",
-  },
-
   notFound: {
     subtitle: "Cosmic Produce Network",
     titleLine1: "Not",
@@ -83,13 +74,6 @@ export const HERO_COPY: HeroCopyMapT = {
     titleLine2: "Broke",
     description: "A glitch in the sacred geometry. The cosmic grid is recalibrating — try again in a moment.",
     buttonPrimary: "Try Again",
-  },
-  celestialAstrolabe: {
-    subtitle: "Precision Instrument / Ceremonial Object",
-    titleLine1: "Celestial",
-    titleLine2: "Astrolabe",
-    description:
-      "Part navigation device, part decorative obsession. Measures nothing useful, looks absolutely correct doing it.",
   },
   cosmicCartography: {
     subtitle: "Classified Spatial Index",

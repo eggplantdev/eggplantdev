@@ -6,7 +6,6 @@
     "fontSize": "Font size",
     "toggleTheme": "Contrast",
     "allAnimations": "All animations",
-    "letterAnimations": "Letter animations",
     "animationNotice": "This site uses heavy animations that may feel laggy on older devices or in some browsers. You can control it here.",
     "drawerDismiss": "Got it"
   },
