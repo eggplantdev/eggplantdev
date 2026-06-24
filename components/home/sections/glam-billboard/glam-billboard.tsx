@@ -74,15 +74,17 @@ export function GlamBillboard() {
         <div className="fest-container relative z-10">
           {/* min-h drives the section height; the meet-fit svg scales the rings/lines with it, so min-h and
               max-w set the size of the whole composition. */}
-          <div className="relative z-10 mx-auto grid min-h-84 max-w-xl grid-cols-[1fr_auto] items-center md:max-w-2xl lg:min-h-92 lg:max-w-3xl xl:min-h-104">
-            <div className="flex flex-col items-start">
-              <p className="text-hot-pink/80 mb-6 w-full text-left font-mono text-xs tracking-[0.5em] whitespace-pre-line uppercase lg:text-sm">
-                {SUBTITLE}
-              </p>
-            </div>
+          <div className="relative z-10 mx-auto grid min-h-84 max-w-md grid-cols-[1fr_auto] items-center lg:min-h-92 lg:max-w-xl xl:min-h-104">
+            <p className="text-hot-pink/80 w-full text-left font-mono text-xs tracking-[0.2em] whitespace-pre-line uppercase lg:text-sm">
+              {SUBTITLE}
+            </p>
 
             <div className="relative z-10 flex w-full items-center justify-center">
-              <EggplantImage preset="glam-gold" glowPreset="gold" sizeClass="size-36 md:size-40 lg:size-48" priority />
+              <EggplantImage
+                preset="glam-gold"
+                glowPreset="gold"
+                sizeClass="size-28 sm:size-32 md:size-40 lg:size-48"
+              />
             </div>
           </div>
         </div>
