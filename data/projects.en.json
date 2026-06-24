@@ -20,10 +20,11 @@
             "TanStack Form",
             "TipTap",
             "WCAG",
-            "i18n",
             "Headless Wordpress",
             "Zod",
-            "Zustand"
+            "Zustand",
+            "i18n",
+            "shadcn/ui"
           ]
         }
       ]
@@ -40,7 +41,17 @@
         { "type": "main", "cats": { "Year": "2025" } },
         {
           "type": "techstack",
-          "tags": ["React", "React Query", "TypeScript", "Tailwind", "TanStack Table"]
+          "tags": [
+            "React",
+            "React Query",
+            "TypeScript",
+            "Tailwind",
+            "TanStack Table",
+            "React Hook Form",
+            "Zustand",
+            "Zod",
+            "shadcn/ui"
+          ]
         }
       ]
     },
@@ -64,8 +75,6 @@
             "React Hook Form",
             "Zod",
             "Radix UI",
-            "dnd-kit",
-            "Google Maps",
             "Zustand",
             "i18n"
           ]
@@ -84,7 +93,7 @@
         { "type": "main", "cats": { "Year": "2023" } },
         {
           "type": "techstack",
-          "tags": ["Next.js", "Headless WordPress", "Tailwind", "GSAP", "Framer Motion"]
+          "tags": ["Next.js", "Headless WordPress", "Tailwind", "GSAP", "Framer Motion", "React Hook Form", "Zod"]
         }
       ]
     },
@@ -100,7 +109,7 @@
         { "type": "main", "cats": { "Year": "2023" } },
         {
           "type": "techstack",
-          "tags": ["Next.js", "TypeScript", "GSAP", "Framer Motion", "Tailwind", "GraphQL", "Strapi", "MySQL"]
+          "tags": ["Next.js", "TypeScript", "GSAP", "Tailwind", "GraphQL", "Strapi"]
         }
       ]
     },
@@ -116,7 +125,7 @@
         { "type": "main", "cats": { "Year": "2022–2023" } },
         {
           "type": "techstack",
-          "tags": ["React", "TypeScript", "Tailwind"]
+          "tags": ["Next.js", "React", "Tailwind", "Headless WordPress"]
         }
       ]
     },
@@ -132,7 +141,7 @@
         { "type": "main", "cats": { "Year": "2022" } },
         {
           "type": "techstack",
-          "tags": ["Next.js", "React", "Shopify", "i18n", "Tailwind", "Framer Motion"]
+          "tags": ["Next.js", "React", "Shopify", "i18n", "Tailwind"]
         }
       ]
     },
@@ -143,7 +152,7 @@
       "category": "freelance",
       "domains": ["SaaS", "AI"],
       "url": "https://eggplant-notes.vercel.app",
-      "description": "Built as part of the 10xDevs program — an exploration of AI-native software engineering across the full development workflow: research, planning, implementation, and production maintenance.\nThe result is a feature-rich spaced-repetition learning app for developers, built from scratch with AI in just a few weeks. Notes are grouped into subjects and rendered with syntax-highlighted code, then turned into recall cards scheduled by the FSRS algorithm. Users connect their own OpenRouter key to generate notes and cards with AI (including from pasted text and PDFs), and a token-authenticated HTTP API lets CLI tools and coding agents talk to the app directly. Installable as a PWA, with strict per-user data isolation enforced by Postgres row-level security.",
+      "description": "Built as part of the 10xDevs program — an exploration of AI native software engineering across the full development workflow. \nThe result is a feature-rich spaced-repetition learning app, built from scratch with AI in just a few weeks. Notes are grouped into subjects and rendered with syntax-highlighted code, then turned into recall cards scheduled by the FSRS algorithm. Users connect their own OpenRouter key to generate notes and cards with AI (hundreds of models to choose from), and a token-authenticated HTTP API lets coding agents talk to the app directly. ",
       "sections": [
         { "type": "main", "cats": { "Year": "2026" } },
         {
@@ -154,7 +163,7 @@
             "TypeScript",
             "Supabase",
             "PostgreSQL",
-            "AI SDK",
+            "Vercel AI SDK",
             "OpenRouter",
             "FSRS",
             "Tailwind",
@@ -170,7 +179,7 @@
       "category": "freelance",
       "domains": ["E-commerce", "Brand"],
       "url": "https://www.chaoskitchen.pl",
-      "description": "A high-end personal-brand site and e-commerce, built solo end-to-end. The single-page scrolling experience extends her Instagram presence — showcasing private dinners, premium catering, retreat cooking, and fermentation workshops — and is paired with a full ebook store: cart, Przelewy24 payments, digital fulfilment, and gated download links delivered by email. Everything here is mine — the design concept and visual identity for the site, the cart and store flow, and the full stack, from the Payload CMS backend and Postgres data layer to the animated GSAP frontend.",
+      "description": "A high-end personal-brand site with a full ebook store, delivered as a single-page scrolling experience. Everything here is mine — the design concept and visual identity, the cart and store flow, and the full stack, from the Payload CMS backend to the animated frontend.\nThis is where I started experimenting with AI-powered design and animations. Only a few months ago, a page like this would have taken months and a design team — this time I built it all on my own.",
       "sections": [
         { "type": "main", "cats": { "Year": "2026" } },
         {
@@ -181,6 +190,8 @@
             "PostgreSQL",
             "TypeScript",
             "Przelewy24",
+            "TenStack Form",
+            "Zod",
             "GSAP",
             "Framer Motion",
             "Tailwind"
@@ -195,21 +206,24 @@
       "category": "freelance",
       "domains": ["SaaS"],
       "url": "https://wykonczymy.vercel.app/",
-      "description": "A full operations platform for a construction and renovation company. What began as basic money-flow tracking has grown into an integrated business system: multi-register cash management on a dual-ledger model (real cash flow vs. per-investment P&L — margins, balances, labor and material costs), project management with role-based access for the whole team, and an in-app cost-estimate editor with sections, work stages, a shared work catalogue, and live totals that is replacing the company's old Google Sheets workflow — with Sheets/Drive sync bridging the migration. I build and own it end-to-end on Next.js and Payload CMS, including the financial calculation engine and email automation.",
+      "description": "It started when the owner of a growing company came to me with a familiar problem: the business had outgrown its tools. Cash flow, expenses, every investment — all of it lived in a tangle of Google Sheets that was impossible to keep in sync and a real bottleneck day to day. We wanted to try to use AI assisted coding to design and built a small app to take the pressure off, and it worked so well that we decided to move the entire operation off Sheets and into it.\nToday it's a full operations platform handling hundreds of transactions a month: multi-register cash management on a dual-ledger model (real cash flow vs. per-investment P&L — margins, balances, labor and material costs), team-wide project management with role-based access, and an in-app cost-estimate editor with work stages, a shared catalogue, and live totals. We're now in the middle of the full migration — keeping the existing Sheets running while everything moves into the app. I am building it end to end and the work is ongoing.",
       "sections": [
         { "type": "main", "cats": { "Year": "2026–present" } },
         {
           "type": "techstack",
           "tags": [
             "Next.js",
-            "React",
             "TypeScript",
             "Payload CMS",
             "PostgreSQL",
             "Google Sheets API",
             "TanStack Table",
             "TanStack Form",
-            "Tailwind"
+            "Zod",
+            "Zustand",
+            "react-datasheet-grid",
+            "Tailwind",
+            "shadcn/ui"
           ]
         }
       ]
@@ -221,7 +235,7 @@
       "category": "freelance",
       "domains": ["E-commerce", "Platform"],
       "url": "https://www.moodbox.pl",
-      "description": "A material-sampling platform for interior designers — they browse curated collections of tiles, textiles, wood flooring, and mosaics from partner brands, order samples, and receive them in organized boxes. I built the platform end-to-end: a Shopify-integrated storefront wired to a custom Payload CMS backend on Postgres. The core of it is a post-purchase feedback loop — HMAC-verified Shopify order webhooks feed a scheduled-email queue that, seven days after a box ships, emails each customer a tokenized link to a multi-step brand survey. The survey gathers per-brand ratings and reasons through conditional, cross-validated steps with autosave, commits atomically as a database transaction, then issues a one-off Shopify discount code in return. Partner content, every survey question, and all email templates are editable in the CMS, and lead and response data export to CSV — giving brands a direct read on how their materials land with specifiers.",
+      "description": "A material-sampling platform for interior designers, built end-to-end. When the client came to me, all that existed was the idea and a single-page design she had mocked up in Canva and wanted implemented — I took it from there to a full platform: a Shopify-integrated storefront backed by a custom Payload CMS on Postgres.\nShopify runs the storefront, but the whole point of the platform — and the reason it needed a custom backend — is capturing structured feedback from designers on the samples they receive. That backend powers a post-purchase feedback loop: HMAC-verified Shopify order webhooks feed a scheduled-email queue that, seven days after a box ships, emails each customer a tokenized link to a multi-step brand survey. The survey gathers per-brand ratings and reasons through conditional, cross-validated steps, then issues a one-off discount code in return. Partner content, every survey question, and all email templates are editable in the CMS, and lead and response data export to CSV — giving brands a direct read on how their materials land with specifiers.",
       "sections": [
         { "type": "main", "cats": { "Year": "2025" } },
         {
@@ -248,7 +262,7 @@
       "category": "freelance",
       "domains": ["Blog"],
       "url": "https://www.olejtopisze.pl",
-      "description": "A lifestyle blog platform about the struggles and joys of simple life — blending humor, travel stories and personal reflection. I implemented a WordPress backend for content management paired with a custom Svelte frontend, delivering a clean, minimal reading experience that prioritizes typography and quick scanning across categories like humor, serious essays, and personal stories. My first solo work.",
+      "description": "A lifestyle blog platform about the struggles and joys of simple life — blending humor, travel stories and personal reflection. I implemented a WordPress backend for content management paired with a custom Svelte frontend, delivering a clean, minimal reading experience that prioritizes typography and quick scanning across categories like humor, serious essays, and personal stories. My first full stack solo work and first encounter with Svelte.",
       "sections": [
         { "type": "main", "cats": { "Year": "2024" } },
         {
