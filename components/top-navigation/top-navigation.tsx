@@ -38,7 +38,9 @@ export function TopNavigation() {
 
   return (
     <>
-      {/* Logo — eggplant brand mark; fades in with the rest of the nav once the hero intro is done */}
+      {/* Logo — eggplant brand mark; fades in with the rest of the nav once the hero intro is done.
+          Only the wordmark inverts (mix-blend-difference lives on the text in EggplantLogo); the
+          colored dot mark keeps its true colors. */}
       <div className="pointer-events-none fixed top-0 right-0 left-0 z-99999">
         <div className="fest-container flex w-full items-start">
           <EggplantLogo />

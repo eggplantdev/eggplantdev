@@ -25,7 +25,7 @@ export function EggplantLogo({ className, link = true }: { className?: string; l
       transition={{ duration: 0.5, ease: "easeOut" }}
     >
       {logo}
-      <span className="text-primary font-mono text-sm font-semibold tracking-tight whitespace-nowrap sm:text-base lg:text-lg">
+      <span className="text-primary font-mono text-sm font-semibold tracking-tight whitespace-nowrap mix-blend-difference sm:text-base lg:text-lg">
         eggplant_dev
       </span>
     </motion.span>
