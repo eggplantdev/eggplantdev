@@ -1,8 +1,4 @@
 {
-  "slogan": "Selected Work",
-  "introText": "Projects I've contributed to across e-commerce, SaaS, cultural platforms, and business tools — as part of agency teams and as a freelancer.",
-  "backgroundDesktop": "/images/projects/hero-desktop.jpg",
-  "backgroundMobile": "/images/projects/hero-mobile.jpg",
   "projects": [
     {
       "uuid": "1",
@@ -10,78 +6,24 @@
       "name": "Fest Forum",
       "category": "commercial",
       "url": "https://www.festforum.pl",
-      "description": "A bilingual digital platform for Poland's festival industry, built for the Kraków Festival Office and the National Centre for Culture. It pairs a public festival site with a gated membership community where organizers register, build profiles, and publish their own articles through a moderated submission flow. I architected the frontend against two backends at once — a headless WordPress (ACF + WPML) driving the editorial pages, and a custom API handling accounts, authentication, membership, and submissions. Core work includes a multi-step application builder, an event program with capacity-limited registration, edition-driven theming, and a fully WCAG-compliant UI with a dedicated high-contrast accessibility mode. The project is ongoing.",
-      "logo": "/images/projects/alpha-logo.png",
-      "tempSlug": "/projects/fest-forum",
+      "description": "A bilingual digital platform for Poland's festival industry, built for the Kraków Festival Office and the National Centre for Culture. It pairs a public festival site with a gated membership community where organizers register, build profiles, and publish their own articles through a moderated submission flow. I architected the frontend against two backends at once — a headless WordPress driving the editorial pages, and a custom API handling accounts, authentication, membership, and submissions. Core work includes a multi-step application builder, an event program with capacity-limited registration, edition-driven theming, and a fully WCAG-compliant UI. The project is ongoing.",
       "sections": [
-        {
-          "type": "main",
-          "cats": {
-            "Client": "Kraków Festival Office",
-            "Region": "Poland",
-            "Year": "2026–present",
-            "Industry": "Culture & Events"
-          },
-          "slides": [
-            {
-              "mainFoto": "/images/projects/alpha/slide-1.jpg",
-              "desktopView": "/images/projects/alpha/slide-1-desktop.jpg",
-              "mobileView": "/images/projects/alpha/slide-1-mobile.jpg"
-            }
-          ]
-        },
-        {
-          "type": "simple",
-          "titleLine": ["The", "Challenge"],
-          "text": "Poland's festival industry lacked a centralized platform for sharing knowledge across organizations. Festival organizers relied on scattered email threads, outdated PDFs, and word-of-mouth to exchange best practices on copyright, sustainability, and audience engagement. We needed to build a single, accessible hub that could serve hundreds of cultural institutions while meeting strict WCAG compliance requirements."
-        },
-        {
-          "type": "screenshots",
-          "gridColumnsNumber": 2,
-          "images": [
-            "/images/projects/alpha/slide-1.jpg",
-            "/images/projects/alpha/slide-1-desktop.jpg",
-            "/images/projects/alpha/slide-1-mobile.jpg",
-            "/images/projects/alpha/slide-1.jpg"
-          ]
-        },
-        {
-          "type": "video",
-          "desktopScreenshot": "/images/projects/alpha/slide-1-desktop.jpg",
-          "mobileScreenshot": "/images/projects/alpha/slide-1-mobile.jpg"
-        },
-        {
-          "type": "team",
-          "title": "Project Team",
-          "cards": [
-            {
-              "title": "Frontend Development",
-              "content": "Konrad Antonik — component architecture, WCAG implementation, article builder, animations"
-            },
-            { "title": "Design", "content": "Navarra Lab design team — UI/UX, visual identity, responsive layouts" },
-            { "title": "Backend", "content": "Custom CMS integration, content modeling, API design" },
-            {
-              "title": "Project Management",
-              "content": "Coordination with Kraków Festival Office and National Centre for Culture"
-            }
-          ]
-        },
-        {
-          "type": "quote",
-          "titleLine": ["What They", "Said"],
-          "quotes": [
-            {
-              "quote": "The platform transformed how Polish festivals share knowledge. What used to take weeks of back-and-forth emails now happens in real time.",
-              "name": "Anna Kowalska",
-              "title": "Program Director, Kraków Festival Office",
-              "avatar": "/images/projects/alpha-logo.png"
-            }
-          ]
-        },
+        { "type": "main", "cats": { "Year": "2026–present" } },
         {
           "type": "techstack",
-          "title": "Technology Stack",
-          "tags": ["Next.js", "React", "TypeScript", "Tailwind CSS", "WCAG", "i18n"]
+          "tags": [
+            "Next.js",
+            "React",
+            "TypeScript",
+            "Tailwind",
+            "TanStack Form",
+            "TipTap",
+            "WCAG",
+            "i18n",
+            "Headless Wordpress",
+            "Zod",
+            "Zustand"
+          ]
         }
       ]
     },
@@ -91,30 +33,12 @@
       "name": "BUILD/LOG",
       "category": "commercial",
       "url": "https://buildlog.app",
-      "description": "A construction project management SaaS that tracks the full lifecycle of building projects — from excavation to final handover. Built as part of a team, I integrated a custom PHP backend with a React and React Query frontend, building out complex data flows for project timelines, forms, filterable tables, and detailed views across multiple project phases.",
-      "logo": "/images/projects/alpha-logo.png",
-      "tempSlug": "/projects/buildlog",
+      "description": "A construction site-management platform that pulls a job site's tasks, defects, and photo documentation into one workspace — replacing scattered emails, chat threads, and paper. Built as part of a team, I integrated a custom PHP backend with a React and React Query frontend, building the kanban-style task tracking, filterable tables, multi-step forms, and detailed item views that the role-specific dashboards — site managers, contractors, inspectors — all run on.",
       "sections": [
-        {
-          "type": "main",
-          "cats": {
-            "Client": "BUILD/LOG",
-            "Region": "Poland",
-            "Year": "2025",
-            "Industry": "Construction & SaaS"
-          },
-          "slides": [
-            {
-              "mainFoto": "/images/projects/alpha/slide-1.jpg",
-              "desktopView": "/images/projects/alpha/slide-1-desktop.jpg",
-              "mobileView": "/images/projects/alpha/slide-1-mobile.jpg"
-            }
-          ]
-        },
+        { "type": "main", "cats": { "Year": "2025" } },
         {
           "type": "techstack",
-          "title": "Technology Stack",
-          "tags": ["React", "React Query", "TypeScript", "PHP", "Tailwind CSS"]
+          "tags": ["React", "React Query", "TypeScript", "Tailwind", "TanStack Table"]
         }
       ]
     },
@@ -125,29 +49,23 @@
       "category": "commercial",
       "url": "https://themakery.de",
       "description": "A multilingual admin dashboard and marketplace for an artisan workshop platform with hundreds of existing users. I was responsible for the transition from an aging, slow admin interface to a modern tech stack in Next.js — rebuilding data management views, user flows, and the core marketplace functionality while keeping the platform operational for its existing user base throughout the migration.",
-      "logo": "/images/projects/alpha-logo.png",
-      "tempSlug": "/projects/the-makery",
       "sections": [
-        {
-          "type": "main",
-          "cats": {
-            "Client": "The Makery",
-            "Region": "Europe",
-            "Year": "2024–2025",
-            "Industry": "Marketplace"
-          },
-          "slides": [
-            {
-              "mainFoto": "/images/projects/alpha/slide-1.jpg",
-              "desktopView": "/images/projects/alpha/slide-1-desktop.jpg",
-              "mobileView": "/images/projects/alpha/slide-1-mobile.jpg"
-            }
-          ]
-        },
+        { "type": "main", "cats": { "Year": "2024–2025" } },
         {
           "type": "techstack",
-          "title": "Technology Stack",
-          "tags": ["Next.js", "React", "TypeScript", "i18n"]
+          "tags": [
+            "Next.js",
+            "React",
+            "TypeScript",
+            "Tailwind",
+            "React Hook Form",
+            "Zod",
+            "Radix UI",
+            "dnd-kit",
+            "Google Maps",
+            "Zustand",
+            "i18n"
+          ]
         }
       ]
     },
@@ -157,30 +75,12 @@
       "name": "BHT Startup Hub",
       "category": "commercial",
       "url": "https://www.bht-berlin.de",
-      "description": "The website for Berlin University of Technology's startup incubator — a lean accelerator that has supported over 300 founders with coaching, coworking space, and equity-free scholarships. I built the custom frontend integrated with a WordPress backend, delivering pages for their programs (Berlin Startup Stipendium, EXIST grants), event calendars, news, and partner showcases.",
-      "logo": "/images/projects/alpha-logo.png",
-      "tempSlug": "/projects/bht-startup-hub",
+      "description": "The website for Berlin University of Technology's startup incubator — a lean accelerator that has supported founders with coaching, coworking space, and equity-free scholarships. I built the custom frontend integrated with a WordPress backend.",
       "sections": [
-        {
-          "type": "main",
-          "cats": {
-            "Client": "BHT Berlin",
-            "Region": "Germany",
-            "Year": "2023",
-            "Industry": "Education & Startups"
-          },
-          "slides": [
-            {
-              "mainFoto": "/images/projects/alpha/slide-1.jpg",
-              "desktopView": "/images/projects/alpha/slide-1-desktop.jpg",
-              "mobileView": "/images/projects/alpha/slide-1-mobile.jpg"
-            }
-          ]
-        },
+        { "type": "main", "cats": { "Year": "2023" } },
         {
           "type": "techstack",
-          "title": "Technology Stack",
-          "tags": ["React", "TypeScript", "WordPress", "REST API"]
+          "tags": ["Next.js", "Headless WordPress", "Tailwind", "GSAP", "Framer Motion"]
         }
       ]
     },
@@ -190,30 +90,12 @@
       "name": "Navarra Lab",
       "category": "commercial",
       "url": "https://navarra-lab.com/projects",
-      "description": "The company portfolio website for Navarra Lab — the design studio and software house where I work. Showcases projects for clients like DMEXCO (Red Dot award winner), Zalando Connected Retail, The Makery, and others. This site is also the foundation that my personal portfolio is built on — a v2 evolution of the same codebase with custom animations, smooth scrolling, and a bilingual content system.",
-      "logo": "/images/projects/alpha-logo.png",
-      "tempSlug": "/projects/navarra-lab",
+      "description": "The company portfolio website for Navarra Lab — the design studio and software house where I work. This site is also the foundation that my personal portfolio is built on.",
       "sections": [
-        {
-          "type": "main",
-          "cats": {
-            "Client": "Navarra Lab",
-            "Region": "Berlin & Kraków",
-            "Year": "2023",
-            "Industry": "Design & Technology"
-          },
-          "slides": [
-            {
-              "mainFoto": "/images/projects/alpha/slide-1.jpg",
-              "desktopView": "/images/projects/alpha/slide-1-desktop.jpg",
-              "mobileView": "/images/projects/alpha/slide-1-mobile.jpg"
-            }
-          ]
-        },
+        { "type": "main", "cats": { "Year": "2023" } },
         {
           "type": "techstack",
-          "title": "Technology Stack",
-          "tags": ["Next.js", "React", "TypeScript", "GSAP", "Framer Motion", "Tailwind CSS", "i18n"]
+          "tags": ["Next.js", "TypeScript", "GSAP", "Framer Motion", "Tailwind", "GraphQL", "Strapi", "MySQL"]
         }
       ]
     },
@@ -223,30 +105,12 @@
       "name": "Ultramaryna",
       "category": "commercial",
       "url": "https://ultramaryna.pl",
-      "description": "A cultural events discovery platform for the GZM metropolis in Silesia, operating since 2001 as a free guide to the region's cultural life. The platform lets users browse events across theater, music, visual arts, and film — with filtering by type, location, and date. I built the frontend for the digital platform, including the event browsing experience, newsletter integration, and the magazine content section.",
-      "logo": "/images/projects/alpha-logo.png",
-      "tempSlug": "/projects/ultramaryna",
+      "description": "A cultural events discovery platform, operating as a free guide to the Silesia region's cultural life. The platform lets users browse events across theater, music, visual arts, and film. I built the frontend for the digital platform, including the event browsing experience, newsletter integration, and the magazine content section.",
       "sections": [
-        {
-          "type": "main",
-          "cats": {
-            "Client": "Ultramaryna",
-            "Region": "Silesia, Poland",
-            "Year": "2022–2023",
-            "Industry": "Culture & Media"
-          },
-          "slides": [
-            {
-              "mainFoto": "/images/projects/alpha/slide-1.jpg",
-              "desktopView": "/images/projects/alpha/slide-1-desktop.jpg",
-              "mobileView": "/images/projects/alpha/slide-1-mobile.jpg"
-            }
-          ]
-        },
+        { "type": "main", "cats": { "Year": "2022–2023" } },
         {
           "type": "techstack",
-          "title": "Technology Stack",
-          "tags": ["React", "TypeScript", "Tailwind CSS"]
+          "tags": ["React", "TypeScript", "Tailwind"]
         }
       ]
     },
@@ -256,171 +120,12 @@
       "name": "Murat Yumak",
       "category": "commercial",
       "url": "https://www.muratyumak.com",
-      "description": "A bilingual e-commerce platform for a Berlin-based curator of vintage streetwear classics from the 80s to the present. The site operates like a museum meets boutique — each item comes with cultural context and provenance, and objects remain viewable even after being sold. I built the bilingual (EN/DE) Shopify-integrated frontend with advanced filtering by brand, size, condition, and year, along with the archival browsing experience that sets the shop apart from typical resale platforms.",
-      "logo": "/images/projects/alpha-logo.png",
-      "tempSlug": "/projects/murat-yumak",
+      "description": "A bilingual e-commerce platform for a Berlin-based curator of vintage streetwear classics from the 80s to the present. The site operates like a museum meets boutique — each item comes with cultural context and provenance, and objects remain viewable even after being sold. I built the bilingual Shopify-integrated frontend with advanced filtering, along with the archival browsing experience that sets the shop apart from typical resale platforms.",
       "sections": [
-        {
-          "type": "main",
-          "cats": {
-            "Client": "Murat Yumak",
-            "Region": "Berlin, Germany",
-            "Year": "2022",
-            "Industry": "E-Commerce & Fashion"
-          },
-          "slides": [
-            {
-              "mainFoto": "/images/projects/alpha/slide-1.jpg",
-              "desktopView": "/images/projects/alpha/slide-1-desktop.jpg",
-              "mobileView": "/images/projects/alpha/slide-1-mobile.jpg"
-            }
-          ]
-        },
+        { "type": "main", "cats": { "Year": "2022" } },
         {
           "type": "techstack",
-          "title": "Technology Stack",
-          "tags": ["React", "TypeScript", "Shopify", "i18n"]
-        }
-      ]
-    },
-    {
-      "uuid": "11",
-      "slug": "chaos-kitchen",
-      "name": "Chaos Kitchen",
-      "category": "freelance",
-      "url": "https://www.chaoskitchen.pl",
-      "description": "A high-end personal-brand site for nomadic chef Marta Leśniewska, built solo end-to-end. The single-page scrolling experience extends her Instagram presence — showcasing private dinners, premium catering, retreat cooking, and fermentation workshops — and is paired with a full ebook store: cart, Przelewy24 payments, digital fulfilment, and gated download links delivered by email. I designed and built the entire stack, from the Payload CMS backend and Postgres data layer to the animated GSAP frontend.",
-      "logo": "/images/projects/alpha-logo.png",
-      "tempSlug": "/projects/chaos-kitchen",
-      "sections": [
-        {
-          "type": "main",
-          "cats": {
-            "Client": "Marta Leśniewska — Chaos Kitchen",
-            "Region": "Poland",
-            "Year": "2026",
-            "Industry": "Personal Brand & E-Commerce"
-          },
-          "slides": [
-            {
-              "mainFoto": "/images/projects/alpha/slide-1.jpg",
-              "desktopView": "/images/projects/alpha/slide-1-desktop.jpg",
-              "mobileView": "/images/projects/alpha/slide-1-mobile.jpg"
-            }
-          ]
-        },
-        {
-          "type": "techstack",
-          "title": "Technology Stack",
-          "tags": [
-            "Next.js",
-            "Payload CMS",
-            "PostgreSQL",
-            "TypeScript",
-            "Przelewy24",
-            "GSAP",
-            "Framer Motion",
-            "Tailwind CSS"
-          ]
-        }
-      ]
-    },
-    {
-      "uuid": "7",
-      "slug": "wykonczymy",
-      "name": "Wykonczymy",
-      "category": "freelance",
-      "url": "https://www.wykonczymy.com.pl",
-      "description": "A full operations platform for a family-run construction and renovation company in Warsaw. What began as basic money-flow tracking has grown into an integrated business system: multi-register cash management on a dual-ledger model (real cash flow vs. per-investment P&L — margins, balances, labor and material costs), project management with role-based access for the whole team, and an in-app cost-estimate (kosztorys) editor with sections, work stages, a shared work catalogue, and live totals that is replacing the company's old Google Sheets workflow — with Sheets/Drive sync bridging the migration. I build and own it end-to-end on Next.js and Payload CMS, including the financial calculation engine and email automation.",
-      "logo": "/images/projects/alpha-logo.png",
-      "tempSlug": "/projects/wykonczymy",
-      "sections": [
-        {
-          "type": "main",
-          "cats": {
-            "Client": "Wykonczymy",
-            "Region": "Warsaw, Poland",
-            "Year": "2026–present",
-            "Industry": "Construction & Business Tools"
-          },
-          "slides": [
-            {
-              "mainFoto": "/images/projects/alpha/slide-1.jpg",
-              "desktopView": "/images/projects/alpha/slide-1-desktop.jpg",
-              "mobileView": "/images/projects/alpha/slide-1-mobile.jpg"
-            }
-          ]
-        },
-        {
-          "type": "techstack",
-          "title": "Technology Stack",
-          "tags": ["Next.js", "React", "TypeScript", "Payload CMS", "PostgreSQL", "Google Sheets API", "Tailwind CSS"]
-        }
-      ]
-    },
-    {
-      "uuid": "8",
-      "slug": "moodbox",
-      "name": "Moodbox",
-      "category": "freelance",
-      "url": "https://www.moodbox.pl",
-      "description": "A material sampling platform for interior designers and project professionals. Designers browse curated collections of tiles, textiles, wood flooring, and mosaics from partner brands like Cersanit, Paradyż, and Dunin — select samples, and receive them in organized boxes. I built the full platform with Shopify integration for the ordering flow, a custom Payload CMS backend for managing partner content and collections, plus email campaign tooling, surveys, and webhook integrations.",
-      "logo": "/images/projects/alpha-logo.png",
-      "tempSlug": "/projects/moodbox",
-      "sections": [
-        {
-          "type": "main",
-          "cats": {
-            "Client": "Moodbox",
-            "Region": "Poland",
-            "Year": "2025–present",
-            "Industry": "Interior Design & E-Commerce"
-          },
-          "slides": [
-            {
-              "mainFoto": "/images/projects/alpha/slide-1.jpg",
-              "desktopView": "/images/projects/alpha/slide-1-desktop.jpg",
-              "mobileView": "/images/projects/alpha/slide-1-mobile.jpg"
-            }
-          ]
-        },
-        {
-          "type": "techstack",
-          "title": "Technology Stack",
-          "tags": ["Next.js", "React", "TypeScript", "Payload CMS", "Shopify", "Tailwind CSS"]
-        }
-      ]
-    },
-    {
-      "uuid": "9",
-      "slug": "olej-to",
-      "name": "Olej.to",
-      "category": "freelance",
-      "url": "https://www.olejtopisze.pl",
-      "description": "A lifestyle blog platform about the struggles and joys of simple life — blending humor, travel stories from Sri Lanka to Cambodia, and personal reflection. I implemented a WordPress backend for content management paired with a custom Svelte frontend, delivering a clean, minimal reading experience that prioritizes typography and quick scanning across categories like humor, serious essays, and personal stories.",
-      "logo": "/images/projects/alpha-logo.png",
-      "tempSlug": "/projects/olej-to",
-      "sections": [
-        {
-          "type": "main",
-          "cats": {
-            "Client": "Olej.to",
-            "Region": "Poland",
-            "Year": "2024",
-            "Industry": "Media & Publishing"
-          },
-          "slides": [
-            {
-              "mainFoto": "/images/projects/alpha/slide-1.jpg",
-              "desktopView": "/images/projects/alpha/slide-1-desktop.jpg",
-              "mobileView": "/images/projects/alpha/slide-1-mobile.jpg"
-            }
-          ]
-        },
-        {
-          "type": "techstack",
-          "title": "Technology Stack",
-          "tags": ["Svelte", "WordPress", "REST API", "CSS"]
+          "tags": ["Next.js", "React", "Shopify", "i18n", "Tailwind", "Framer Motion"]
         }
       ]
     },
@@ -430,29 +135,11 @@
       "name": "Eggplant Notes",
       "category": "freelance",
       "url": "https://eggplant-notes.vercel.app",
-      "description": "A spaced-repetition learning app for developers, built solo end-to-end. Notes are grouped into subjects and rendered with syntax-highlighted code, then turned into recall cards scheduled by the FSRS algorithm — each card links back to its source note so context is never lost. Users connect their own OpenRouter key to generate notes and cards with AI (including from pasted text and PDFs), and a token-authenticated HTTP API lets CLI tools and coding agents read and write content directly. Installable as a PWA, with strict per-user data isolation enforced by Postgres row-level security.",
-      "logo": "/images/projects/alpha-logo.png",
-      "tempSlug": "/projects/eggplant-notes",
+      "description": "AI-powered spaced-repetition learning app I designed and shipped solo — by orchestrating Claude and coding agents end-to-end, frontend to database, in a fraction of the usual time. Notes are organized into subjects and rendered with syntax-highlighted code, then turned into recall cards scheduled by the FSRS algorithm — each card links back to its source note so context is never lost. Users connect their own OpenRouter key to generate notes and cards with AI, and a token-authenticated HTTP API lets CLI tools and coding agents read and write content directly — the app is both built with AI and built for it. Installable as a PWA, with strict per-user data isolation enforced by Postgres row-level security.",
       "sections": [
-        {
-          "type": "main",
-          "cats": {
-            "Client": "Self-initiated",
-            "Region": "Poland",
-            "Year": "2026",
-            "Industry": "EdTech & Developer Tools"
-          },
-          "slides": [
-            {
-              "mainFoto": "/images/projects/alpha/slide-1.jpg",
-              "desktopView": "/images/projects/alpha/slide-1-desktop.jpg",
-              "mobileView": "/images/projects/alpha/slide-1-mobile.jpg"
-            }
-          ]
-        },
+        { "type": "main", "cats": { "Year": "2026" } },
         {
           "type": "techstack",
-          "title": "Technology Stack",
           "tags": [
             "Next.js",
             "React",
@@ -462,9 +149,99 @@
             "AI SDK",
             "OpenRouter",
             "FSRS",
-            "Tailwind CSS",
+            "Tailwind",
             "shadcn/ui"
           ]
+        }
+      ]
+    },
+    {
+      "uuid": "11",
+      "slug": "chaos-kitchen",
+      "name": "Chaos Kitchen",
+      "category": "freelance",
+      "url": "https://www.chaoskitchen.pl",
+      "description": "A high-end personal-brand site and e-commerce, built solo end-to-end. The single-page scrolling experience extends her Instagram presence — showcasing private dinners, premium catering, retreat cooking, and fermentation workshops — and is paired with a full ebook store: cart, Przelewy24 payments, digital fulfilment, and gated download links delivered by email. Everything here is mine — the design concept and visual identity for the site, the cart and store flow, and the full stack, from the Payload CMS backend and Postgres data layer to the animated GSAP frontend.",
+      "sections": [
+        { "type": "main", "cats": { "Year": "2026" } },
+        {
+          "type": "techstack",
+          "tags": [
+            "Next.js",
+            "Payload CMS",
+            "PostgreSQL",
+            "TypeScript",
+            "Przelewy24",
+            "GSAP",
+            "Framer Motion",
+            "Tailwind"
+          ]
+        }
+      ]
+    },
+    {
+      "uuid": "7",
+      "slug": "wykonczymy",
+      "name": "Wykonczymy",
+      "category": "freelance",
+      "url": "https://wykonczymy.vercel.app/",
+      "description": "A full operations platform for a construction and renovation company. What began as basic money-flow tracking has grown into an integrated business system: multi-register cash management on a dual-ledger model (real cash flow vs. per-investment P&L — margins, balances, labor and material costs), project management with role-based access for the whole team, and an in-app cost-estimate editor with sections, work stages, a shared work catalogue, and live totals that is replacing the company's old Google Sheets workflow — with Sheets/Drive sync bridging the migration. I build and own it end-to-end on Next.js and Payload CMS, including the financial calculation engine and email automation.",
+      "sections": [
+        { "type": "main", "cats": { "Year": "2026–present" } },
+        {
+          "type": "techstack",
+          "tags": [
+            "Next.js",
+            "React",
+            "TypeScript",
+            "Payload CMS",
+            "PostgreSQL",
+            "Google Sheets API",
+            "TanStack Table",
+            "TanStack Form",
+            "Tailwind"
+          ]
+        }
+      ]
+    },
+    {
+      "uuid": "8",
+      "slug": "moodbox",
+      "name": "Moodbox",
+      "category": "freelance",
+      "url": "https://www.moodbox.pl",
+      "description": "A material-sampling platform for interior designers — they browse curated collections of tiles, textiles, wood flooring, and mosaics from partner brands, order samples, and receive them in organized boxes. I built the platform end-to-end: a Shopify-integrated storefront wired to a custom Payload CMS backend on Postgres. The core of it is a post-purchase feedback loop — HMAC-verified Shopify order webhooks feed a scheduled-email queue that, seven days after a box ships, emails each customer a tokenized link to a multi-step brand survey. The survey gathers per-brand ratings and reasons through conditional, cross-validated steps with autosave, commits atomically as a database transaction, then issues a one-off Shopify discount code in return. Partner content, every survey question, and all email templates are editable in the CMS, and lead and response data export to CSV — giving brands a direct read on how their materials land with specifiers.",
+      "sections": [
+        { "type": "main", "cats": { "Year": "2025" } },
+        {
+          "type": "techstack",
+          "tags": [
+            "Next.js",
+            "React",
+            "TypeScript",
+            "Payload CMS",
+            "PostgreSQL",
+            "Shopify",
+            "TanStack Form",
+            "Zod",
+            "Nodemailer",
+            "Tailwind"
+          ]
+        }
+      ]
+    },
+    {
+      "uuid": "9",
+      "slug": "olej-to",
+      "name": "Olej.to",
+      "category": "freelance",
+      "url": "https://www.olejtopisze.pl",
+      "description": "A lifestyle blog platform about the struggles and joys of simple life — blending humor, travel stories and personal reflection. I implemented a WordPress backend for content management paired with a custom Svelte frontend, delivering a clean, minimal reading experience that prioritizes typography and quick scanning across categories like humor, serious essays, and personal stories. My first solo work.",
+      "sections": [
+        { "type": "main", "cats": { "Year": "2024" } },
+        {
+          "type": "techstack",
+          "tags": ["SvelteKit", "Svelte", "TypeScript", "Headless WordPress", "Tailwind"]
         }
       ]
     }
